@@ -75,6 +75,7 @@
     </Compile>
     <Compile Include="IconCache.cs" />
     <Compile Include="IconSet.cs" />
+    <Compile Include="util\RegistryMigration.cs" />
     <Compile Include="Runmode.cs" />
     <Compile Include="AemActions.cs" />
     <Compile Include="AemInstance.cs" />

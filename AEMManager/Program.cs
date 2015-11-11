@@ -5,6 +5,7 @@ using System.Threading;
 using System.Drawing;
 using System.Reflection;
 using System.Diagnostics;
+using AEMManager.Util;
 
 namespace AEMManager {
 
@@ -43,10 +44,13 @@ namespace AEMManager {
         return;
       }
 
+      // check if registry settings should be migrated
+      RegistryMigration.CheckForLegacyRegistrySettings();
+
       // initialice tray icon
       InitializeNotifyIcon();
 
-      // Anwendungsthread laufen lassen
+      // run application main thread
       Program.AemManagerForm = new AemManager();
       Program.AemManagerForm.Visible = false;
       Application.Run(Program.AemManagerForm);

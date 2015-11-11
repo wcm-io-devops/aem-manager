@@ -29,6 +29,8 @@ namespace AEMManager {
             this.lblCopyright = new System.Windows.Forms.Label();
             this.lblWebsite = new System.Windows.Forms.LinkLabel();
             this.lblVersion = new System.Windows.Forms.Label();
+            this.lblLicense = new System.Windows.Forms.Label();
+            this.lblLicenseLink = new System.Windows.Forms.LinkLabel();
             this.SuspendLayout();
             // 
             // OKButton
@@ -59,7 +61,7 @@ namespace AEMManager {
             this.lblCopyright.AutoSize = true;
             this.lblCopyright.BackColor = System.Drawing.Color.Transparent;
             this.lblCopyright.ForeColor = System.Drawing.Color.White;
-            this.lblCopyright.Location = new System.Drawing.Point(20, 84);
+            this.lblCopyright.Location = new System.Drawing.Point(20, 79);
             this.lblCopyright.Name = "lblCopyright";
             this.lblCopyright.Size = new System.Drawing.Size(51, 13);
             this.lblCopyright.TabIndex = 2;
@@ -71,7 +73,7 @@ namespace AEMManager {
             this.lblWebsite.BackColor = System.Drawing.Color.Transparent;
             this.lblWebsite.ForeColor = System.Drawing.Color.White;
             this.lblWebsite.LinkColor = System.Drawing.Color.White;
-            this.lblWebsite.Location = new System.Drawing.Point(20, 104);
+            this.lblWebsite.Location = new System.Drawing.Point(20, 97);
             this.lblWebsite.Name = "lblWebsite";
             this.lblWebsite.Size = new System.Drawing.Size(257, 13);
             this.lblWebsite.TabIndex = 3;
@@ -90,6 +92,31 @@ namespace AEMManager {
             this.lblVersion.TabIndex = 4;
             this.lblVersion.Text = "Version 0.0";
             // 
+            // lblLicense
+            // 
+            this.lblLicense.AutoSize = true;
+            this.lblLicense.BackColor = System.Drawing.Color.Transparent;
+            this.lblLicense.ForeColor = System.Drawing.Color.White;
+            this.lblLicense.Location = new System.Drawing.Point(20, 120);
+            this.lblLicense.Name = "lblLicense";
+            this.lblLicense.Size = new System.Drawing.Size(73, 13);
+            this.lblLicense.TabIndex = 5;
+            this.lblLicense.Text = "Open Source:";
+            // 
+            // lblLicenseLink
+            // 
+            this.lblLicenseLink.AutoSize = true;
+            this.lblLicenseLink.BackColor = System.Drawing.Color.Transparent;
+            this.lblLicenseLink.ForeColor = System.Drawing.Color.White;
+            this.lblLicenseLink.LinkColor = System.Drawing.Color.White;
+            this.lblLicenseLink.Location = new System.Drawing.Point(99, 120);
+            this.lblLicenseLink.Name = "lblLicenseLink";
+            this.lblLicenseLink.Size = new System.Drawing.Size(102, 13);
+            this.lblLicenseLink.TabIndex = 6;
+            this.lblLicenseLink.TabStop = true;
+            this.lblLicenseLink.Text = "Apache 2.0 License";
+            this.lblLicenseLink.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lblLicenseLink_LinkClicked);
+            // 
             // InfoDialog
             // 
             this.AcceptButton = this.OKButton;
@@ -98,6 +125,8 @@ namespace AEMManager {
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.CancelButton = this.OKButton;
             this.ClientSize = new System.Drawing.Size(440, 142);
+            this.Controls.Add(this.lblLicenseLink);
+            this.Controls.Add(this.lblLicense);
             this.Controls.Add(this.lblVersion);
             this.Controls.Add(this.lblWebsite);
             this.Controls.Add(this.lblCopyright);
@@ -123,5 +152,7 @@ namespace AEMManager {
     private System.Windows.Forms.Label lblCopyright;
     private System.Windows.Forms.LinkLabel lblWebsite;
     private System.Windows.Forms.Label lblVersion;
-  }
+        private System.Windows.Forms.Label lblLicense;
+        private System.Windows.Forms.LinkLabel lblLicenseLink;
+    }
 }

@@ -595,6 +595,7 @@ namespace AEMManager {
       // get bundle status
       BundleStatus bundleStatus = BundleStatus.UNKNOWN;
       string bundleListUrl = pInstance.UrlWithContextPath + "/system/console/bundles/.json";
+      Stopwatch responseTimeStopwatch = new Stopwatch();
       try {
         mLog.Debug("Get bundle list from URL: " + bundleListUrl);
 
@@ -603,7 +604,9 @@ namespace AEMManager {
         request.Credentials = new NetworkCredential(pInstance.Username, pInstance.Password);
         request.Timeout = AEMManager.Properties.Settings.Default.BundleListTimeout;
 
+        responseTimeStopwatch.Start();
         WebResponse response = request.GetResponse();
+        responseTimeStopwatch.Stop();
 
         StreamReader streamReader = new StreamReader(response.GetResponseStream());
         String responseText = streamReader.ReadToEnd();
@@ -621,8 +624,15 @@ namespace AEMManager {
 
       }
       catch (WebException ex) {
-        mLog.Debug("Unable to connect to " + bundleListUrl + ": " + ex.Message);
-        bundleStatus = BundleStatus.UNKNOWN;
+        if (ex.Status == WebExceptionStatus.Timeout) {
+          mLog.Debug("Unable to connect to " + bundleListUrl + " due to timeout. "
+            + "Configured timeout: " + AEMManager.Properties.Settings.Default.BundleListTimeout + "ms, "
+            + "measured response time: " + responseTimeStopwatch.ElapsedMilliseconds + "ms");
+        }
+        else {
+          mLog.Debug("Unable to connect to " + bundleListUrl + ": " + ex.Message);
+          bundleStatus = BundleStatus.UNKNOWN;
+        }
       }
       catch (Exception ex) {
         mLog.Error("Error getting bundle list from URL: " + bundleListUrl, ex);

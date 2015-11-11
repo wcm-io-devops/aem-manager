@@ -71,7 +71,7 @@ namespace AEMManager.Util {
 
       RegistryKey oldPreferences = source.OpenSubKey("Preferences", false);
       if (oldPreferences != null) {
-        MigrateInstances(oldPreferences, RegistryUtil.GetUserKey("Preferences"));
+        MigratePreferences(oldPreferences, RegistryUtil.GetUserKey("Preferences"));
       }
     }
 

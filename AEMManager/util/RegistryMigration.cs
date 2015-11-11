@@ -40,7 +40,12 @@ namespace AEMManager.Util {
         return false;
       }
       RegistryKey keyApplication = keyCompany.OpenSubKey(attrTitle.Title, false);
-      return keyApplication != null;
+      if (keyApplication == null) {
+        return false;
+      }
+
+      RegistryKey keyInstances = keyApplication.OpenSubKey("Instances", false);
+      return keyInstances != null;
     }
 
     private static RegistryKey GetPredecessorRegistrySettings() {

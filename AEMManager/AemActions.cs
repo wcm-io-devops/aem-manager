@@ -215,7 +215,7 @@ namespace AEMManager {
 
       // Hide AEM configuration wizards
       if (pInstance.HideConfigWizard) {
-        javaArgs.Add("-DhideConfigWizard");
+        javaArgs.Add("-DhideConfigWizard=true");
       }
 
       // custom JVM args

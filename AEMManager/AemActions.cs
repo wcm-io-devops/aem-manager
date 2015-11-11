@@ -602,21 +602,23 @@ namespace AEMManager {
         request.Timeout = AEMManager.Properties.Settings.Default.BundleListTimeout;
 
         responseTimeStopwatch.Start();
-        WebResponse response = request.GetResponse();
-        responseTimeStopwatch.Stop();
+        using (WebResponse response = request.GetResponse()) {
+          responseTimeStopwatch.Stop();
 
-        StreamReader streamReader = new StreamReader(response.GetResponseStream());
-        String responseText = streamReader.ReadToEnd();
-        streamReader.Close();
+          String responseText;
+          using (StreamReader streamReader = new StreamReader(response.GetResponseStream())) { 
+            responseText = streamReader.ReadToEnd();
+          }
 
-        // parse JSON
-        bool success = false;
-        object value = JSON.JsonDecode(responseText, ref success);
-        if (success) {
-          bundleStatus = GetCombinedBundleStatus(value);
-        }
-        else {
-          mLog.Warn("Parsing JSON response failed: " + responseText);
+          // parse JSON
+          bool success = false;
+          object value = JSON.JsonDecode(responseText, ref success);
+          if (success) {
+            bundleStatus = GetCombinedBundleStatus(value, responseTimeStopwatch.ElapsedMilliseconds);
+          }
+          else {
+            mLog.Warn("Parsing JSON response failed: " + responseText);
+          }
         }
 
       }
@@ -639,7 +641,7 @@ namespace AEMManager {
       return bundleStatus;
     }
 
-    private static BundleStatus GetCombinedBundleStatus(object pJsonObject) {
+    private static BundleStatus GetCombinedBundleStatus(object pJsonObject, long pRepsonseTime) {
       BundleStatus bundleStatus = BundleStatus.RUNNING;
 
       Hashtable root = GetHashtable(pJsonObject);
@@ -657,7 +659,7 @@ namespace AEMManager {
         }
       }
 
-      mLog.Debug("Status: " + status + ", result: " + bundleStatus);
+      mLog.Debug("Status: " + status + ", result: " + bundleStatus + " (response time: " + pRepsonseTime + "ms)");
 
       return bundleStatus;
     }

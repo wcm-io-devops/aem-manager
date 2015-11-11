@@ -213,9 +213,9 @@ namespace AEMManager {
         javaArgs.Add("-Dcom.sun.management.jmxremote.port=" + pInstance.JConsolePort + " -Dcom.sun.management.jmxremote.ssl=false -Dcom.sun.management.jmxremote.authenticate=false");
       }
 
-      // Wicket mode
-      if (pInstance.WicketDevelopmentMode) {
-        javaArgs.Add("-Dwicket.configuration=DEVELOPMENT");
+      // Hide AEM configuration wizards
+      if (pInstance.HideConfigWizard) {
+        javaArgs.Add("-DhideConfigWizard");
       }
 
       // custom JVM args

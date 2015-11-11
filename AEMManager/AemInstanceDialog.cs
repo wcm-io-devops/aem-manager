@@ -83,7 +83,7 @@ namespace AEMManager {
       chkJConsole.Checked = mInstance.JConsole;
       txtJConsolePort.Text = mInstance.JConsolePort.ToString();
       txtJConsolePort.Enabled = chkJConsole.Checked;
-      chkWicketDevelopmentMode.Checked = mInstance.WicketDevelopmentMode;
+      chkHideConfigWizards.Checked = mInstance.HideConfigWizard;
       chkShowInstanceWindow.Checked = mInstance.ShowInstanceWindow;
       chkOpenBrowser.Checked = mInstance.OpenBrowser;
       chkRemoteProcess.Checked = mInstance.RemoteProcess;
@@ -134,7 +134,7 @@ namespace AEMManager {
       mInstance.JProfilerPort = ParseWithDefault(txtJProfilerPort.Text, AemInstance.DEFAULT_JPROFILER_PORT);
       mInstance.JConsole = chkJConsole.Checked;
       mInstance.JConsolePort = ParseWithDefault(txtJConsolePort.Text, AemInstance.DEFAULT_JCONSOLE_PORT);
-      mInstance.WicketDevelopmentMode = chkWicketDevelopmentMode.Checked;
+      mInstance.HideConfigWizard = chkHideConfigWizards.Checked;
       mInstance.ShowInstanceWindow = chkShowInstanceWindow.Checked;
       mInstance.OpenBrowser = chkOpenBrowser.Checked;
       mInstance.RemoteProcess = chkRemoteProcess.Checked;

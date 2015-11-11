@@ -46,7 +46,7 @@ namespace AEMManager {
     private int mJProfilerPort = DEFAULT_JPROFILER_PORT;
     private bool mJConsole = false;
     private int mJConsolePort = DEFAULT_JCONSOLE_PORT;
-    private bool mWicketDevelopmentMode = true;
+    private bool mHideConfigWizard = true;
     private bool mShowInstanceWindow = false;
     private bool mOpenBrowser = false;
     private bool mRemoteProcess = false;
@@ -324,12 +324,12 @@ namespace AEMManager {
       }
     }
 
-    public bool WicketDevelopmentMode {
+    public bool HideConfigWizard {
       get {
-        return mWicketDevelopmentMode;
+        return mHideConfigWizard;
       }
       set {
-        mWicketDevelopmentMode = value;
+        mHideConfigWizard = value;
       }
     }
 
@@ -604,7 +604,7 @@ namespace AEMManager {
       mJProfilerPort = (int)pKey.GetValue("JProfilerPort", mJProfilerPort);
       mJConsole = ((int)pKey.GetValue("JConsole", mJConsole ? 1 : 0)) != 0;
       mJConsolePort = (int)pKey.GetValue("JConsolePort", mJConsolePort);
-      mWicketDevelopmentMode = ((int)pKey.GetValue("WicketDevelopmentMode", mWicketDevelopmentMode ? 1 : 0)) != 0;
+      mHideConfigWizard = ((int)pKey.GetValue("HideConfigWizard", mHideConfigWizard ? 1 : 0)) != 0;
       mShowInstanceWindow = ((int)pKey.GetValue("ShowInstanceWindow", mShowInstanceWindow ? 1 : 0)) != 0;
       mOpenBrowser = ((int)pKey.GetValue("OpenBrowser", mOpenBrowser ? 1 : 0)) != 0;
       mRemoteProcess = ((int)pKey.GetValue("RemoteProcess", mRemoteProcess ? 1 : 0)) != 0;
@@ -650,7 +650,7 @@ namespace AEMManager {
       key.SetValue("JProfilerPort", mJProfilerPort);
       key.SetValue("JConsole", mJConsole ? 1 : 0);
       key.SetValue("JConsolePort", mJConsolePort);
-      key.SetValue("WicketDevelopmentMode", mWicketDevelopmentMode ? 1 : 0);
+      key.SetValue("HideConfigWizard", mHideConfigWizard ? 1 : 0);
       key.SetValue("ShowInstanceWindow", mShowInstanceWindow ? 1 : 0);
       key.SetValue("OpenBrowser", mOpenBrowser ? 1 : 0);
       key.SetValue("RemoteProcess", mRemoteProcess ? 1 : 0);
@@ -715,7 +715,7 @@ namespace AEMManager {
       clone.mJProfilerPort = mJProfilerPort;
       clone.mJConsole = mJConsole;
       clone.mJConsolePort = mJConsolePort;
-      clone.mWicketDevelopmentMode = mWicketDevelopmentMode;
+      clone.mHideConfigWizard = mHideConfigWizard;
       clone.mShowInstanceWindow = mShowInstanceWindow;
       clone.mOpenBrowser = mOpenBrowser;
       clone.mRemoteProcess = mRemoteProcess;

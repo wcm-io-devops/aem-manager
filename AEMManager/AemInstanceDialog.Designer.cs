@@ -55,7 +55,7 @@ namespace AEMManager {
       this.label1 = new System.Windows.Forms.Label();
       this.lblMB = new System.Windows.Forms.Label();
       this.txtMaxPermSizeMb = new System.Windows.Forms.TextBox();
-      this.chkWicketDevelopmentMode = new System.Windows.Forms.CheckBox();
+      this.chkHideConfigWizards = new System.Windows.Forms.CheckBox();
       this.lblMaxPermSizeMb = new System.Windows.Forms.Label();
       this.txtHeapMaxSizeMb = new System.Windows.Forms.TextBox();
       this.lblHeapMaxSizeMb = new System.Windows.Forms.Label();
@@ -267,7 +267,7 @@ namespace AEMManager {
       this.grpJVMSettings.Controls.Add(this.label1);
       this.grpJVMSettings.Controls.Add(this.lblMB);
       this.grpJVMSettings.Controls.Add(this.txtMaxPermSizeMb);
-      this.grpJVMSettings.Controls.Add(this.chkWicketDevelopmentMode);
+      this.grpJVMSettings.Controls.Add(this.chkHideConfigWizards);
       this.grpJVMSettings.Controls.Add(this.lblMaxPermSizeMb);
       this.grpJVMSettings.Controls.Add(this.txtHeapMaxSizeMb);
       this.grpJVMSettings.Controls.Add(this.lblHeapMaxSizeMb);
@@ -400,15 +400,15 @@ namespace AEMManager {
       this.txtMaxPermSizeMb.Size = new System.Drawing.Size(52, 20);
       this.txtMaxPermSizeMb.TabIndex = 7;
       // 
-      // chkWicketDevelopmentMode
+      // chkHideConfigWizards
       // 
-      this.chkWicketDevelopmentMode.AutoSize = true;
-      this.chkWicketDevelopmentMode.Location = new System.Drawing.Point(15, 261);
-      this.chkWicketDevelopmentMode.Name = "chkWicketDevelopmentMode";
-      this.chkWicketDevelopmentMode.Size = new System.Drawing.Size(156, 17);
-      this.chkWicketDevelopmentMode.TabIndex = 18;
-      this.chkWicketDevelopmentMode.Text = "Wicket Development Mode";
-      this.chkWicketDevelopmentMode.UseVisualStyleBackColor = true;
+      this.chkHideConfigWizards.AutoSize = true;
+      this.chkHideConfigWizards.Location = new System.Drawing.Point(15, 261);
+      this.chkHideConfigWizards.Name = "chkHideConfigWizards";
+      this.chkHideConfigWizards.Size = new System.Drawing.Size(148, 17);
+      this.chkHideConfigWizards.TabIndex = 18;
+      this.chkHideConfigWizards.Text = "Hide AEM Config Wizards";
+      this.chkHideConfigWizards.UseVisualStyleBackColor = true;
       // 
       // lblMaxPermSizeMb
       // 
@@ -857,7 +857,7 @@ namespace AEMManager {
     private System.Windows.Forms.Label lblPassword;
     private System.Windows.Forms.GroupBox grpJVMSettings;
     private System.Windows.Forms.TextBox txtMaxPermSizeMb;
-    private System.Windows.Forms.CheckBox chkWicketDevelopmentMode;
+    private System.Windows.Forms.CheckBox chkHideConfigWizards;
     private System.Windows.Forms.Label lblMaxPermSizeMb;
     private System.Windows.Forms.TextBox txtHeapMaxSizeMb;
     private System.Windows.Forms.Label lblHeapMaxSizeMb;

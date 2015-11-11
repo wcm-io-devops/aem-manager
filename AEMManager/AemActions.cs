@@ -312,10 +312,8 @@ namespace AEMManager {
 
         pInstance.ConsoleOutputWindow.AppendConsoleLog("Shutting down instance...");
 
-        WebRequest request = WebRequest.Create(shutdownUrl);
+        WebRequest request = WebRequestCreate(pInstance, shutdownUrl);
         request.Method = "POST";
-        request.PreAuthenticate = true;
-        request.Credentials = new NetworkCredential(pInstance.Username, pInstance.Password);
         request.Timeout = 3000;
 
         request.GetResponse();
@@ -599,9 +597,8 @@ namespace AEMManager {
       try {
         mLog.Debug("Get bundle list from URL: " + bundleListUrl);
 
-        WebRequest request = WebRequest.Create(bundleListUrl);
-        request.PreAuthenticate = true;
-        request.Credentials = new NetworkCredential(pInstance.Username, pInstance.Password);
+        WebRequest request = WebRequestCreate(pInstance, bundleListUrl);
+        request.Method = "GET";
         request.Timeout = AEMManager.Properties.Settings.Default.BundleListTimeout;
 
         responseTimeStopwatch.Start();
@@ -663,6 +660,23 @@ namespace AEMManager {
       mLog.Debug("Status: " + status + ", result: " + bundleStatus);
 
       return bundleStatus;
+    }
+
+    /// <summary>
+    /// Creates a web request with preemptive authentication.
+    /// </summary>
+    /// <param name="instance">AEM instance</param>
+    /// <param name="url">URL</param>
+    /// <returns></returns>
+    private static WebRequest WebRequestCreate(AemInstance instance, string url) {
+      WebRequest request = WebRequest.Create(url);
+
+      // "manual" preemptive authentication
+      string authInfo = instance.Username + ":" + instance.Password;
+      authInfo = Convert.ToBase64String(Encoding.Default.GetBytes(authInfo));
+      request.Headers["Authorization"] = "Basic " + authInfo;
+
+      return request;
     }
 
     private static Hashtable GetHashtable(object pJsonObject) {

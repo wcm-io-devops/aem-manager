@@ -1,0 +1,320 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{C56C5863-C4A8-4FE0-8D06-79A8E3D03C6D}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>AEMManager</RootNamespace>
+    <AssemblyName>AEMManager</AssemblyName>
+    <ApplicationIcon>resources\default.ico</ApplicationIcon>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>2.0</OldToolsVersion>
+    <UpgradeBackupLocation />
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <TargetFrameworkProfile />
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>none</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=1b44e1d426115821, processorArchitecture=MSIL">
+      <HintPath>packages\log4net.1.2.10\lib\2.0\log4net.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BundleStatus.cs" />
+    <Compile Include="AemInstanceType.cs" />
+    <Compile Include="ConsoleWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ConsoleWindow.Designer.cs">
+      <DependentUpon>ConsoleWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="IconCache.cs" />
+    <Compile Include="IconSet.cs" />
+    <Compile Include="Runmode.cs" />
+    <Compile Include="AemActions.cs" />
+    <Compile Include="AemInstance.cs" />
+    <Compile Include="AemInstanceDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AemInstanceDialog.Designer.cs">
+      <DependentUpon>AemInstanceDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AemInstanceList.cs" />
+    <Compile Include="AemManager.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AemManager.Designer.cs">
+      <DependentUpon>AemManager.cs</DependentUpon>
+    </Compile>
+    <Compile Include="InfoDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InfoDialog.Designer.cs">
+      <DependentUpon>InfoDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PreferencesDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PreferencesDialog.Designer.cs">
+      <DependentUpon>PreferencesDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="util\SystemUtil.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="ConsoleWindow.resx">
+      <DependentUpon>ConsoleWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="util\JSON.cs" />
+    <Compile Include="util\RegistryUtil.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="AemManager.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>AemManager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="resources\default.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="resources\default\trayicon_default.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="resources\default\trayicon_starting.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="AemInstanceDialog.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>AemInstanceDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InfoDialog.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>InfoDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PreferencesDialog.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>PreferencesDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="resources\default\trayicon_running.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="IWshRuntimeLibrary">
+      <Guid>{F935DC20-1CF0-11D0-ADB9-00C04FD58A0B}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+    </COMReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="icons\aem.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="icons\log.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <EmbeddedResource Include="resources\inv_overlay\trayicon_disabled.ico" />
+    <EmbeddedResource Include="resources\inv_overlay\trayicon_running.ico" />
+    <EmbeddedResource Include="resources\inv_overlay\trayicon_starting.ico" />
+    <EmbeddedResource Include="resources\inv_overlay\trayicon_unknown.ico" />
+    <EmbeddedResource Include="resources\overlay\trayicon_disabled.ico" />
+    <EmbeddedResource Include="resources\overlay\trayicon_running.ico" />
+    <EmbeddedResource Include="resources\overlay\trayicon_starting.ico" />
+    <EmbeddedResource Include="resources\overlay\trayicon_unknown.ico" />
+    <EmbeddedResource Include="resources\inv_num1\trayicon_default.ico" />
+    <EmbeddedResource Include="resources\inv_num1\trayicon_disabled.ico" />
+    <EmbeddedResource Include="resources\inv_num1\trayicon_running.ico" />
+    <EmbeddedResource Include="resources\inv_num1\trayicon_starting.ico" />
+    <EmbeddedResource Include="resources\inv_num1\trayicon_unknown.ico" />
+    <EmbeddedResource Include="resources\inv_num2\trayicon_default.ico" />
+    <EmbeddedResource Include="resources\inv_num2\trayicon_disabled.ico" />
+    <EmbeddedResource Include="resources\inv_num2\trayicon_running.ico" />
+    <EmbeddedResource Include="resources\inv_num2\trayicon_starting.ico" />
+    <EmbeddedResource Include="resources\inv_num2\trayicon_unknown.ico" />
+    <EmbeddedResource Include="resources\inv_num3\trayicon_default.ico" />
+    <EmbeddedResource Include="resources\inv_num3\trayicon_disabled.ico" />
+    <EmbeddedResource Include="resources\inv_num3\trayicon_running.ico" />
+    <EmbeddedResource Include="resources\inv_num3\trayicon_starting.ico" />
+    <EmbeddedResource Include="resources\inv_num3\trayicon_unknown.ico" />
+    <EmbeddedResource Include="resources\inv_num4\trayicon_default.ico" />
+    <EmbeddedResource Include="resources\inv_num4\trayicon_disabled.ico" />
+    <EmbeddedResource Include="resources\inv_num4\trayicon_running.ico" />
+    <EmbeddedResource Include="resources\inv_num4\trayicon_starting.ico" />
+    <EmbeddedResource Include="resources\inv_num4\trayicon_unknown.ico" />
+    <EmbeddedResource Include="resources\inv_num5\trayicon_default.ico" />
+    <EmbeddedResource Include="resources\inv_num5\trayicon_disabled.ico" />
+    <EmbeddedResource Include="resources\inv_num5\trayicon_running.ico" />
+    <EmbeddedResource Include="resources\inv_num5\trayicon_starting.ico" />
+    <EmbeddedResource Include="resources\inv_num5\trayicon_unknown.ico" />
+    <EmbeddedResource Include="resources\inv_num6\trayicon_default.ico" />
+    <EmbeddedResource Include="resources\inv_num6\trayicon_disabled.ico" />
+    <EmbeddedResource Include="resources\inv_num6\trayicon_running.ico" />
+    <EmbeddedResource Include="resources\inv_num6\trayicon_starting.ico" />
+    <EmbeddedResource Include="resources\inv_num6\trayicon_unknown.ico" />
+    <EmbeddedResource Include="resources\inv_num7\trayicon_default.ico" />
+    <EmbeddedResource Include="resources\inv_num7\trayicon_disabled.ico" />
+    <EmbeddedResource Include="resources\inv_num7\trayicon_running.ico" />
+    <EmbeddedResource Include="resources\inv_num7\trayicon_starting.ico" />
+    <EmbeddedResource Include="resources\inv_num7\trayicon_unknown.ico" />
+    <EmbeddedResource Include="resources\inv_num8\trayicon_default.ico" />
+    <EmbeddedResource Include="resources\inv_num8\trayicon_disabled.ico" />
+    <EmbeddedResource Include="resources\inv_num8\trayicon_running.ico" />
+    <EmbeddedResource Include="resources\inv_num8\trayicon_starting.ico" />
+    <EmbeddedResource Include="resources\inv_num8\trayicon_unknown.ico" />
+    <EmbeddedResource Include="resources\inv_num9\trayicon_default.ico" />
+    <EmbeddedResource Include="resources\inv_num9\trayicon_disabled.ico" />
+    <EmbeddedResource Include="resources\inv_num9\trayicon_running.ico" />
+    <EmbeddedResource Include="resources\inv_num9\trayicon_starting.ico" />
+    <EmbeddedResource Include="resources\inv_num9\trayicon_unknown.ico" />
+    <EmbeddedResource Include="resources\num9\trayicon_starting.ico" />
+    <EmbeddedResource Include="resources\num9\trayicon_running.ico" />
+    <EmbeddedResource Include="resources\num9\trayicon_disabled.ico" />
+    <EmbeddedResource Include="resources\num9\trayicon_unknown.ico" />
+    <EmbeddedResource Include="resources\num9\trayicon_default.ico" />
+    <EmbeddedResource Include="resources\num8\trayicon_starting.ico" />
+    <EmbeddedResource Include="resources\num8\trayicon_running.ico" />
+    <EmbeddedResource Include="resources\num8\trayicon_disabled.ico" />
+    <EmbeddedResource Include="resources\num8\trayicon_unknown.ico" />
+    <EmbeddedResource Include="resources\num8\trayicon_default.ico" />
+    <EmbeddedResource Include="resources\num7\trayicon_starting.ico" />
+    <EmbeddedResource Include="resources\num7\trayicon_running.ico" />
+    <EmbeddedResource Include="resources\num7\trayicon_disabled.ico" />
+    <EmbeddedResource Include="resources\num7\trayicon_unknown.ico" />
+    <EmbeddedResource Include="resources\num7\trayicon_default.ico" />
+    <EmbeddedResource Include="resources\num6\trayicon_starting.ico" />
+    <EmbeddedResource Include="resources\num6\trayicon_running.ico" />
+    <EmbeddedResource Include="resources\num6\trayicon_disabled.ico" />
+    <EmbeddedResource Include="resources\num6\trayicon_unknown.ico" />
+    <EmbeddedResource Include="resources\num6\trayicon_default.ico" />
+    <EmbeddedResource Include="resources\num5\trayicon_starting.ico" />
+    <EmbeddedResource Include="resources\num5\trayicon_running.ico" />
+    <EmbeddedResource Include="resources\num5\trayicon_disabled.ico" />
+    <EmbeddedResource Include="resources\num5\trayicon_unknown.ico" />
+    <EmbeddedResource Include="resources\num5\trayicon_default.ico" />
+    <EmbeddedResource Include="resources\num4\trayicon_starting.ico" />
+    <EmbeddedResource Include="resources\num4\trayicon_running.ico" />
+    <EmbeddedResource Include="resources\num4\trayicon_disabled.ico" />
+    <EmbeddedResource Include="resources\num4\trayicon_unknown.ico" />
+    <EmbeddedResource Include="resources\num4\trayicon_default.ico" />
+    <EmbeddedResource Include="resources\num3\trayicon_starting.ico" />
+    <EmbeddedResource Include="resources\num3\trayicon_running.ico" />
+    <EmbeddedResource Include="resources\num3\trayicon_disabled.ico" />
+    <EmbeddedResource Include="resources\num3\trayicon_unknown.ico" />
+    <EmbeddedResource Include="resources\num3\trayicon_default.ico" />
+    <EmbeddedResource Include="resources\num2\trayicon_starting.ico" />
+    <EmbeddedResource Include="resources\num2\trayicon_running.ico" />
+    <EmbeddedResource Include="resources\num2\trayicon_disabled.ico" />
+    <EmbeddedResource Include="resources\num2\trayicon_unknown.ico" />
+    <EmbeddedResource Include="resources\num2\trayicon_default.ico" />
+    <None Include="resources\num_examples\test3.ico" />
+    <None Include="resources\num_examples\test4.ico" />
+    <None Include="resources\num_examples\test5.ico" />
+    <None Include="resources\num_examples\test6.ico" />
+    <None Include="resources\num_examples\test9.ico" />
+    <None Include="resources\num_examples\test8.ico" />
+    <None Include="resources\num_examples\test7.ico" />
+    <None Include="resources\num_examples\test2.ico" />
+    <None Include="resources\num_examples\test1.ico" />
+    <EmbeddedResource Include="resources\num1\trayicon_starting.ico" />
+    <EmbeddedResource Include="resources\num1\trayicon_running.ico" />
+    <EmbeddedResource Include="resources\num1\trayicon_disabled.ico" />
+    <EmbeddedResource Include="resources\num1\trayicon_unknown.ico" />
+    <EmbeddedResource Include="resources\num1\trayicon_default.ico" />
+    <EmbeddedResource Include="resources\default\trayicon_disabled.ico" />
+    <EmbeddedResource Include="resources\default\trayicon_unknown.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

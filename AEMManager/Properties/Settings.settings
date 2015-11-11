@@ -1,0 +1,24 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="AEMManager.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="TrayIconRefreshInterval" Type="System.Int32" Scope="Application">
+      <Value Profile="(Default)">1000</Value>
+    </Setting>
+    <Setting Name="ProcessNameViaShortcut" Type="System.Boolean" Scope="Application">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="BundleListTimeout" Type="System.Int32" Scope="Application">
+      <Value Profile="(Default)">400</Value>
+    </Setting>
+    <Setting Name="ReportStatusChangeTimeout" Type="System.Int32" Scope="Application">
+      <Value Profile="(Default)">2000</Value>
+    </Setting>
+    <Setting Name="JProfilerPath" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">C:\Programme\jprofiler7\bin\windows</Value>
+    </Setting>
+    <Setting Name="JProfilerAgent" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">C:\Programme\jprofiler7\bin\agent.jar</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

@@ -1,29 +1,57 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
-	<Product Id="*" Name="AEMManagerSetup" Language="1033" Version="2.0.0.0" Manufacturer="wcm.io" UpgradeCode="58391141-13e1-403c-9fa6-3759099bdb29">
+	<Product Id="*" Name="AEM Manager" Language="1033" UpgradeCode="58391141-13e1-403c-9fa6-3759099bdb29"
+           Manufacturer="wcm.io"
+           Version="2.0.0.0">
 		<Package InstallerVersion="200" Compressed="yes" InstallScope="perMachine" />
 
-		<MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
+		<MajorUpgrade DowngradeErrorMessage="A newer version of AEM Manager is already installed." />
 		<MediaTemplate />
 
-		<Feature Id="ProductFeature" Title="AEMManagerSetup" Level="1">
-			<ComponentGroupRef Id="ProductComponents" />
-		</Feature>
+		<Feature Id="ProductFeature" Title="AEM Manager" Level="1">
+      <ComponentGroupRef Id="ProductComponents" />
+      <ComponentGroupRef Id="ProductComponentsIcons" />
+      <ComponentRef Id="ProgramMenuDir" />
+    </Feature>
 	</Product>
 
 	<Fragment>
-		<Directory Id="TARGETDIR" Name="SourceDir">
-			<Directory Id="ProgramFilesFolder">
-				<Directory Id="INSTALLFOLDER" Name="AEMManager" />
-			</Directory>
-		</Directory>
+    <Directory Id="TARGETDIR" Name="SourceDir">
+      <Directory Id="ProgramFilesFolder">
+        <Directory Id="INSTALLFOLDER" Name="AEMManager">
+          <Directory Id="IconsFolders" Name="icons"/>
+        </Directory>
+      </Directory>
+      <Directory Id="ProgramMenuFolder" Name="Programs">
+        <Directory Id="ProgramMenuDir" Name="AEM Manager">
+          <Component Id="ProgramMenuDir" Guid="E1ED4570-EB34-4E95-B4AE-FB5980A41424">
+            <RemoveFolder Id="ProgramMenuDir" On="uninstall" />
+            <RegistryValue Root="HKCU" Key="Software\wcm.io\AEM Manager" Type="string" Value="" KeyPath="yes" />
+          </Component>
+        </Directory>
+      </Directory>
+    </Directory>
 	</Fragment>
 
 	<Fragment>
-		<ComponentGroup Id="ProductComponents" Directory="INSTALLFOLDER">
-			<Component Id="ProductComponent">
-				<!-- TODO: Insert files, registry keys, and other resources here. -->
-			</Component>
-		</ComponentGroup>
-	</Fragment>
+    <ComponentGroup Id="ProductComponents" Directory="INSTALLFOLDER">
+      <Component Id="AEMManager" Guid="06A70F65-1D3A-4952-97B3-3215718A63BC">
+        <File Id="AEMManager.exe" Name="AEMManager.exe" DiskId="1" Source="../AEMManager/bin/Release/AEMManager.exe" KeyPath="yes">
+          <Shortcut Id="AEMManagerShortcut" Directory="ProgramMenuDir" Name="AEM Manager" Advertise="yes">
+            <Icon Id="AEMManager.exe" SourceFile="../AEMManager/bin/Release/AEMManager.exe" />
+          </Shortcut>
+        </File>
+        <File Id="AEMManager.exe.config" Name="AEMManager.exe.config" DiskId="1" Source="../AEMManager/bin/Release/AEMManager.exe.config"/>
+        <File Id="Interop.IWshRuntimeLibrary.dll" Name="Interop.IWshRuntimeLibrary.dll" DiskId="1" Source="../AEMManager/bin/Release/Interop.IWshRuntimeLibrary.dll"/>
+        <File Id="log4net.dll" Name="log4net.dll" DiskId="1" Source="../AEMManager/bin/Release/log4net.dll"/>
+        <File Id="log4net.xml" Name="log4net.xml" DiskId="1" Source="../AEMManager/bin/Release/log4net.xml"/>
+      </Component>
+    </ComponentGroup>
+    <ComponentGroup Id="ProductComponentsIcons" Directory="IconsFolders">
+      <Component Id="AEMManagerIcons" Guid="B9B867BB-79C9-4656-A342-88101FEC689C">
+        <File Id="aem.ico" Name="aem.ico" DiskId="1" Source="../AEMManager/bin/Release/icons/aem.ico"/>
+        <File Id="log.ico" Name="log.ico" DiskId="1" Source="../AEMManager/bin/Release/icons/log.ico"/>
+      </Component>
+    </ComponentGroup>
+  </Fragment>
 </Wix>

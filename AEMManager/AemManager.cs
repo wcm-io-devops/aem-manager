@@ -11,6 +11,9 @@ namespace AEMManager {
 
   public partial class AemManager : Form {
 
+    private System.Timers.Timer timerBundleStatus;
+    private System.Timers.Timer timerStatusRefresh;
+
     public AemManager() {
       InitializeComponent();
     }
@@ -35,7 +38,14 @@ namespace AEMManager {
 
       timerStartup.Enabled = true;
 
+      timerStatusRefresh = new System.Timers.Timer();
+      timerStatusRefresh.Interval = 1000;
+      timerStatusRefresh.Elapsed += timerStatusRefresh_Tick;
+      timerStatusRefresh.Enabled = true;
+
+      timerBundleStatus = new System.Timers.Timer();
       timerBundleStatus.Interval = AEMManager.Properties.Settings.Default.TrayIconRefreshInterval;
+      timerBundleStatus.Elapsed += timerBundleStatus_Tick;
       timerBundleStatus.Enabled = true;
     }
 

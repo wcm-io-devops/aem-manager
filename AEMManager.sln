@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AEMManager", "AEMManager.csproj", "{C56C5863-C4A8-4FE0-8D06-79A8E3D03C6D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AEMManager", "AEMManager\AEMManager.csproj", "{C56C5863-C4A8-4FE0-8D06-79A8E3D03C6D}"
 EndProject
-Project("{930C7802-8A8C-48F9-8165-68863BCCD9DD}") = "AEMManagerSetup", "..\AEMManagerSetup\AEMManagerSetup.wixproj", "{92469FB7-54F1-4895-B0A9-E2DBEE3D0D37}"
+Project("{930C7802-8A8C-48F9-8165-68863BCCD9DD}") = "AEMManagerSetup", "AEMManagerSetup\AEMManagerSetup.wixproj", "{92469FB7-54F1-4895-B0A9-E2DBEE3D0D37}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

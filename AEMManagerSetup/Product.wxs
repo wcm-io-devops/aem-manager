@@ -2,7 +2,7 @@
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
 	<Product Id="*" Name="AEM Manager" Language="1033" UpgradeCode="58391141-13e1-403c-9fa6-3759099bdb29"
            Manufacturer="wcm.io"
-           Version="2.0.1.0">
+           Version="2.0.2.0">
 		<Package InstallerVersion="200" Compressed="yes" InstallScope="perMachine" />
 
 		<MajorUpgrade DowngradeErrorMessage="A newer version of AEM Manager is already installed." />

@@ -11,6 +11,7 @@
 		<Feature Id="ProductFeature" Title="AEM Manager" Level="1">
       <ComponentGroupRef Id="ProductComponents" />
       <ComponentGroupRef Id="ProductComponentsIcons" />
+      <ComponentRef Id="ApplicationShortcut" />
     </Feature>
 	</Product>
 
@@ -22,14 +23,27 @@
         </Directory>
       </Directory>
       <Directory Id="StartupFolder" Name="Programs"/>
+      <Directory Id="ProgramMenuFolder">
+        <Directory Id="ApplicationProgramsFolder" Name="wcm.io"/>
+      </Directory>
     </Directory>
-	</Fragment>
+    <DirectoryRef Id="ApplicationProgramsFolder">
+      <Component Id="ApplicationShortcut" Guid="2DC1B4C5-C409-45D5-AA3F-61049CDBEDF3">
+        <Shortcut Id="ApplicationStartMenuShortcut"
+                  Name="AEM Manager"
+                  Target="[#AEMManager.exe]"
+                  WorkingDirectory="INSTALLFOLDER"/>
+        <RemoveFolder Id="ApplicationProgramsFolder" On="uninstall"/>
+        <RegistryValue Root="HKCU" Key="Software\wcm.io\AEM Manager" Name="installed" Type="integer" Value="1" KeyPath="yes"/>
+      </Component>
+    </DirectoryRef>
+  </Fragment>
 
 	<Fragment>
     <ComponentGroup Id="ProductComponents" Directory="INSTALLFOLDER">
       <Component Id="AEMManager" Guid="06A70F65-1D3A-4952-97B3-3215718A63BC">
         <File Id="AEMManager.exe" Name="AEMManager.exe" DiskId="1" Source="../AEMManager/bin/Release/AEMManager.exe" KeyPath="yes">
-          <Shortcut Id="AEMManagerShortcut" Directory="StartupFolder" Name="AEM Manager" Advertise="yes">
+          <Shortcut Id="AEMManagerShortcutStartupFolder" Directory="StartupFolder" Name="AEM Manager" Advertise="yes">
             <Icon Id="AEMManager.exe" SourceFile="../AEMManager/bin/Release/AEMManager.exe" />
           </Shortcut>
         </File>

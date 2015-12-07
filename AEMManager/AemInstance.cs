@@ -741,6 +741,10 @@ namespace AEMManager {
       try {
 
         // try to find matching process name
+        /*
+        -- this was supposed to support finding running instance again when AEM manager was stopped
+        -- but this does not seem to work any longer, and even creates performance issues on some machines
+        -- so, deactivate it for now
         foreach (Process process in Process.GetProcesses()) {
           if (process.MainWindowTitle.Equals(this.Name)
               || process.MainWindowTitle.EndsWith("\\" + this.Name + ".lnk")) {
@@ -748,6 +752,7 @@ namespace AEMManager {
             break;
           }
         }
+        */
 
         // if none found use process associated with instance
         if (instanceProcess == null) {

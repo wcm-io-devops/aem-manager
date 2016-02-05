@@ -1,5 +1,5 @@
-wcm.io AEM Manager
-==================
+wcm.io AEM Manager for Windows
+==============================
 
 Taskbar application for managing AEM instances on Windows.
 

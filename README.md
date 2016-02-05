@@ -3,6 +3,9 @@ wcm.io AEM Manager
 
 Taskbar application for managing AEM instances on Windows.
 
+There is also a version for Mac OS X:
+https://github.com/wcm-io-devops/aem-manager-osx
+
 
 Overview
 ---------

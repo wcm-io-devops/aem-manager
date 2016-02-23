@@ -119,19 +119,19 @@ namespace AEMManager {
 
     static void AEMDocumentation_Click(object sender, EventArgs e) {
       System.Diagnostics.Process p = new System.Diagnostics.Process();
-      p.StartInfo.FileName = "http://docs.day.com/";
+      p.StartInfo.FileName = "https://docs.adobe.com/";
       p.Start();
     }
 
     static void AEMServerAPIDocs_Click(object sender, EventArgs e) {
       System.Diagnostics.Process p = new System.Diagnostics.Process();
-      p.StartInfo.FileName = "http://dev.day.com/docs/en/cq/current/javadoc/index.html";
+      p.StartInfo.FileName = "https://docs.adobe.com/docs/en/cq/current/javadoc/index.html";
       p.Start();
     }
 
     static void AEMExtJSWidgetDocs_Info(object sender, EventArgs e) {
       System.Diagnostics.Process p = new System.Diagnostics.Process();
-      p.StartInfo.FileName = "http://dev.day.com/docs/en/cq/current/widgets-api/index.html";
+      p.StartInfo.FileName = "https://docs.adobe.com/docs/en/cq/current/widgets-api/index.html";
       p.Start();
     }
 

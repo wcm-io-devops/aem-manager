@@ -1,7 +1,10 @@
-wcm.io AEM Manager
-==================
+wcm.io AEM Manager for Windows
+==============================
 
 Taskbar application for managing AEM instances on Windows.
+
+There is also a version for Mac OS X:
+https://github.com/wcm-io-devops/aem-manager-osx
 
 
 Overview
@@ -49,5 +52,11 @@ Icon | Overlay Icon | State
 -----|--------------|-------
 ![Disabled](/resources/doc-images/icons/icon_disabled.gif) | ![Disabled](/resources/doc-images/icons/icon_overlay_disabled.gif) | AEM instances is not running
 ![Stopped](/resources/doc-images/icons/icon_stopped.gif) | ![Stopped](/resources/doc-images/icons/icon_overlay_stopped.gif) | AEM instances is currently starting or stopped, Felix console is not available, unable to get bundle status
-![Starting](/resources/doc-images/icons/icon_starting.gif) | ![Starting](/resources/doc-images/icons/icon_overlay_starting.gif) | Some bundles in the AEM instances are starting/stopped or could not be started
+![Starting](/resources/doc-images/icons/icon_starting.gif) | ![Starting](/resources/doc-images/icons/icon_overlay_starting.gif) | Some bundles in the AEM instances are currently starting/stopping or could not be started
 ![Running](/resources/doc-images/icons/icon_running.gif) | ![Running](/resources/doc-images/icons/icon_overlay_running.gif) | AEM instances is running and all bundles are started
+
+
+Issue Tracking
+--------------
+
+For bugs and enhancement requests please file a ticket at https://wcm-io.atlassian.net/projects/WDEVOP

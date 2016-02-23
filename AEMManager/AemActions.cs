@@ -198,6 +198,11 @@ namespace AEMManager {
         jarArgs.Add("-r " + runModes);
       }
 
+      // context path
+      if (!string.IsNullOrEmpty(pInstance.ContextPath) && pInstance.ContextPath!="/") {
+        jarArgs.Add("-contextpath " + pInstance.ContextPath);
+      }
+
       // debug mode
       if (pInstance.JVMDebug && (pInstance.DebugPort > 0)) {
         javaArgs.Add("-Xdebug -Xnoagent -Djava.compiler=NONE -Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=" + pInstance.DebugPort);

@@ -8,6 +8,7 @@ using System.Net;
 using System.Net.Sockets;
 using System.Diagnostics;
 using System.Threading;
+using System.Management;
 using Microsoft.Win32;
 using AEMManager.Util;
 
@@ -336,11 +337,34 @@ namespace AEMManager {
       }
 
       Process process = instance.GetInstanceJavaProcess();
-      if (process != null && !process.HasExited) {
-        mLog.Debug("Killing process for instance " + instance.Name);
-        process.Kill();
+      if (process != null) {
+        KillProcessAndChildrens(process.Id, instance);
       }
 
+    }
+
+    private static void KillProcessAndChildrens(int pid, AemInstance instance) {
+      ManagementObjectSearcher processSearcher = new ManagementObjectSearcher
+        ("Select * From Win32_Process Where ParentProcessID=" + pid);
+      ManagementObjectCollection processCollection = processSearcher.Get();
+
+      try {
+        Process proc = Process.GetProcessById(pid);
+        if (proc != null && !proc.HasExited) {
+          mLog.Debug("Killing process #" + pid + " for instance " + instance.Name);
+          proc.Kill();
+        }
+      }
+      catch (ArgumentException) {
+        // Process already exited.
+      }
+
+      if (processCollection != null) {
+        foreach (ManagementObject mo in processCollection) {
+          // kill child processes(also kills childrens of childrens etc.)
+          KillProcessAndChildrens(Convert.ToInt32(mo["ProcessID"]), instance);
+        }
+      }
     }
 
     private static Process ExecuteCommand(string pWorkDir, string pExecutable, string pArguments, string pProcessName,

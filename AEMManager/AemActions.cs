@@ -154,13 +154,10 @@ namespace AEMManager {
       item.Click += new EventHandler(ControlStopInstance);
       menuItems.Add(item);
 
-      /*
-      -- this does not work yet, disabled --
       item = new MenuItem();
       item.Text = "Kill instance";
       item.Click += new EventHandler(ControlKillInstance);
       menuItems.Add(item);
-      */
 
       foreach (MenuItem i in menuItems) {
         i.Tag = pInstance;

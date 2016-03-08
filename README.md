@@ -56,6 +56,17 @@ Icon | Overlay Icon | State
 ![Running](/resources/doc-images/icons/icon_running.gif) | ![Running](/resources/doc-images/icons/icon_overlay_running.gif) | AEM instances is running and all bundles are started
 
 
+Preferences
+-----------
+
+From the AEM Manager window you can configure preferences via File > Preferences. Currenty the log viewer application can be configured that is used by the shortcuts to log files of an AEM instance.
+
+It is recommended to install [Otros Log Viewer](https://github.com/otros-systems/otroslogviewer) and configure it in the preference dialog.
+
+Here you will find a customized Log-importer configuration so Otros Log Viewer will understand the default AEM log file format by default: [otros-config](https://github.com/wcm-io/wcm-io-tooling/tree/develop/misc/log-analysis/otros-config).
+
+
+
 Issue Tracking
 --------------
 

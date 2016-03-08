@@ -49,6 +49,12 @@ namespace AEMManager {
         else if (iconset.ToString().StartsWith("INV_NUM")) {
           name = "Number #" + iconset.ToString().Substring(7) + " (inverted)";
         }
+        else if (iconset.ToString().StartsWith("Q")) {
+          name = "Square #" + iconset.ToString().Substring(1);
+        }
+        else if (iconset.ToString().StartsWith("INV_Q")) {
+          name = "Square #" + iconset.ToString().Substring(5) + " (inverted)";
+        }
         cboIconSet.Items.Add(new KeyValuePair<string, IconSet>(name, iconset));
         if (iconset == mInstance.IconSet) {
           selectedIconSet = i;

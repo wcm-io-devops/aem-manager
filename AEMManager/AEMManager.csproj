@@ -277,15 +277,6 @@
     <EmbeddedResource Include="resources\num2\trayicon_disabled.ico" />
     <EmbeddedResource Include="resources\num2\trayicon_unknown.ico" />
     <EmbeddedResource Include="resources\num2\trayicon_default.ico" />
-    <None Include="resources\num_examples\test3.ico" />
-    <None Include="resources\num_examples\test4.ico" />
-    <None Include="resources\num_examples\test5.ico" />
-    <None Include="resources\num_examples\test6.ico" />
-    <None Include="resources\num_examples\test9.ico" />
-    <None Include="resources\num_examples\test8.ico" />
-    <None Include="resources\num_examples\test7.ico" />
-    <None Include="resources\num_examples\test2.ico" />
-    <None Include="resources\num_examples\test1.ico" />
     <EmbeddedResource Include="resources\num1\trayicon_starting.ico" />
     <EmbeddedResource Include="resources\num1\trayicon_running.ico" />
     <EmbeddedResource Include="resources\num1\trayicon_disabled.ico" />

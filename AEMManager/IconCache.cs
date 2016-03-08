@@ -41,18 +41,31 @@ namespace AEMManager {
         string overlayIconPath = "AEMManager.resources." + iconSetName + "." + pState + ".ico";
         Icon overlayIcon = new Icon(Assembly.GetExecutingAssembly().GetManifestResourceStream(overlayIconPath));
 
-        // overlay custom icon with overlay icon
-        Bitmap iconBitmap = icon.ToBitmap();
-        Graphics graphics = Graphics.FromImage(iconBitmap);
-        graphics.DrawIcon(overlayIcon, new Rectangle(0, 0, 16, 16));
-        graphics.Save();
+        return GetIcon_InternalWithOverlay(icon, overlayIcon);
+      }
+      else if (iconSetName != IconSet.DEFAULT.ToString().ToLower()) {
+        string iconPath = "AEMManager.resources." + IconSet.DEFAULT.ToString().ToLower() + "." + pState + ".ico";
+        Icon icon = new Icon(Assembly.GetExecutingAssembly().GetManifestResourceStream(iconPath));
 
-        return Icon.FromHandle(iconBitmap.GetHicon());
+        string overlayIconPath = "AEMManager.resources.iconset_" + iconSetName.Substring(0, iconSetName.Length - 1) + "." + iconSetName.Substring(iconSetName.Length - 1) + ".ico";
+        Icon overlayIcon = new Icon(Assembly.GetExecutingAssembly().GetManifestResourceStream(overlayIconPath));
+
+        return GetIcon_InternalWithOverlay(icon, overlayIcon);
       }
       else {
         string iconPath = "AEMManager.resources." + iconSetName + "." + pState + ".ico";
         return new Icon(Assembly.GetExecutingAssembly().GetManifestResourceStream(iconPath));
       }
+    }
+
+    private static Icon GetIcon_InternalWithOverlay(Icon baseIcon, Icon overlayIcon) {
+      // overlay custom icon with overlay icon
+      Bitmap iconBitmap = baseIcon.ToBitmap();
+      Graphics graphics = Graphics.FromImage(iconBitmap);
+      graphics.DrawIcon(overlayIcon, new Rectangle(0, 0, iconBitmap.Width, iconBitmap.Height));
+      graphics.Save();
+
+      return Icon.FromHandle(iconBitmap.GetHicon());
     }
 
   }

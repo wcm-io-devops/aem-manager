@@ -10,7 +10,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("wcm.io")]
 [assembly: AssemblyProduct("wcm.io AEM Manager")]
-[assembly: AssemblyCopyright("©2010-2015 pro!vision GmbH, wcm.io")]
+[assembly: AssemblyCopyright("©2010-2016 pro!vision GmbH, wcm.io")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -29,8 +29,8 @@ using System.Runtime.InteropServices;
 //      Build Number
 //      Revision
 //
-[assembly: AssemblyVersion("2.0.4.0")]
-[assembly: AssemblyFileVersion("2.0.4.0")]
+[assembly: AssemblyVersion("2.1.0.0")]
+[assembly: AssemblyFileVersion("2.1.0.0")]
 
 // Configure log4net using the .config file
 [assembly: log4net.Config.XmlConfiguratorAttribute(Watch = true)]

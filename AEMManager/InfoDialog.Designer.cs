@@ -23,7 +23,6 @@ namespace AEMManager {
     /// the contents of this method with the code editor.
     /// </summary>
     private void InitializeComponent() {
-      System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(InfoDialog));
       this.OKButton = new System.Windows.Forms.Button();
       this.lblAppTitle = new System.Windows.Forms.Label();
       this.lblCopyright = new System.Windows.Forms.Label();
@@ -31,12 +30,14 @@ namespace AEMManager {
       this.lblVersion = new System.Windows.Forms.Label();
       this.lblLicense = new System.Windows.Forms.Label();
       this.lblLicenseLink = new System.Windows.Forms.LinkLabel();
+      this.logo = new System.Windows.Forms.PictureBox();
+      ((System.ComponentModel.ISupportInitialize)(this.logo)).BeginInit();
       this.SuspendLayout();
       // 
       // OKButton
       // 
       this.OKButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-      this.OKButton.Location = new System.Drawing.Point(256, 12);
+      this.OKButton.Location = new System.Drawing.Point(326, 12);
       this.OKButton.Name = "OKButton";
       this.OKButton.Size = new System.Drawing.Size(75, 23);
       this.OKButton.TabIndex = 0;
@@ -49,8 +50,8 @@ namespace AEMManager {
       this.lblAppTitle.AutoSize = true;
       this.lblAppTitle.BackColor = System.Drawing.Color.Transparent;
       this.lblAppTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.lblAppTitle.ForeColor = System.Drawing.Color.White;
-      this.lblAppTitle.Location = new System.Drawing.Point(20, 20);
+      this.lblAppTitle.ForeColor = System.Drawing.SystemColors.ControlText;
+      this.lblAppTitle.Location = new System.Drawing.Point(90, 15);
       this.lblAppTitle.Name = "lblAppTitle";
       this.lblAppTitle.Size = new System.Drawing.Size(129, 13);
       this.lblAppTitle.TabIndex = 1;
@@ -60,8 +61,8 @@ namespace AEMManager {
       // 
       this.lblCopyright.AutoSize = true;
       this.lblCopyright.BackColor = System.Drawing.Color.Transparent;
-      this.lblCopyright.ForeColor = System.Drawing.Color.White;
-      this.lblCopyright.Location = new System.Drawing.Point(20, 79);
+      this.lblCopyright.ForeColor = System.Drawing.SystemColors.ControlText;
+      this.lblCopyright.Location = new System.Drawing.Point(90, 65);
       this.lblCopyright.Name = "lblCopyright";
       this.lblCopyright.Size = new System.Drawing.Size(51, 13);
       this.lblCopyright.TabIndex = 2;
@@ -71,9 +72,9 @@ namespace AEMManager {
       // 
       this.lblWebsite.AutoSize = true;
       this.lblWebsite.BackColor = System.Drawing.Color.Transparent;
-      this.lblWebsite.ForeColor = System.Drawing.Color.White;
-      this.lblWebsite.LinkColor = System.Drawing.Color.White;
-      this.lblWebsite.Location = new System.Drawing.Point(20, 97);
+      this.lblWebsite.ForeColor = System.Drawing.SystemColors.ControlText;
+      this.lblWebsite.LinkColor = System.Drawing.SystemColors.HotTrack;
+      this.lblWebsite.Location = new System.Drawing.Point(90, 90);
       this.lblWebsite.Name = "lblWebsite";
       this.lblWebsite.Size = new System.Drawing.Size(240, 13);
       this.lblWebsite.TabIndex = 3;
@@ -85,8 +86,8 @@ namespace AEMManager {
       // 
       this.lblVersion.AutoSize = true;
       this.lblVersion.BackColor = System.Drawing.Color.Transparent;
-      this.lblVersion.ForeColor = System.Drawing.Color.White;
-      this.lblVersion.Location = new System.Drawing.Point(20, 40);
+      this.lblVersion.ForeColor = System.Drawing.SystemColors.ControlText;
+      this.lblVersion.Location = new System.Drawing.Point(90, 35);
       this.lblVersion.Name = "lblVersion";
       this.lblVersion.Size = new System.Drawing.Size(60, 13);
       this.lblVersion.TabIndex = 4;
@@ -96,8 +97,8 @@ namespace AEMManager {
       // 
       this.lblLicense.AutoSize = true;
       this.lblLicense.BackColor = System.Drawing.Color.Transparent;
-      this.lblLicense.ForeColor = System.Drawing.Color.White;
-      this.lblLicense.Location = new System.Drawing.Point(20, 120);
+      this.lblLicense.ForeColor = System.Drawing.SystemColors.ControlText;
+      this.lblLicense.Location = new System.Drawing.Point(90, 115);
       this.lblLicense.Name = "lblLicense";
       this.lblLicense.Size = new System.Drawing.Size(73, 13);
       this.lblLicense.TabIndex = 5;
@@ -107,9 +108,9 @@ namespace AEMManager {
       // 
       this.lblLicenseLink.AutoSize = true;
       this.lblLicenseLink.BackColor = System.Drawing.Color.Transparent;
-      this.lblLicenseLink.ForeColor = System.Drawing.Color.White;
-      this.lblLicenseLink.LinkColor = System.Drawing.Color.White;
-      this.lblLicenseLink.Location = new System.Drawing.Point(99, 120);
+      this.lblLicenseLink.ForeColor = System.Drawing.SystemColors.ControlText;
+      this.lblLicenseLink.LinkColor = System.Drawing.SystemColors.HotTrack;
+      this.lblLicenseLink.Location = new System.Drawing.Point(162, 115);
       this.lblLicenseLink.Name = "lblLicenseLink";
       this.lblLicenseLink.Size = new System.Drawing.Size(102, 13);
       this.lblLicenseLink.TabIndex = 6;
@@ -117,14 +118,23 @@ namespace AEMManager {
       this.lblLicenseLink.Text = "Apache 2.0 License";
       this.lblLicenseLink.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lblLicenseLink_LinkClicked);
       // 
+      // logo
+      // 
+      this.logo.Image = global::AEMManager.Properties.Resources.wcmio_logo;
+      this.logo.Location = new System.Drawing.Point(21, 12);
+      this.logo.Name = "logo";
+      this.logo.Size = new System.Drawing.Size(52, 53);
+      this.logo.TabIndex = 7;
+      this.logo.TabStop = false;
+      // 
       // InfoDialog
       // 
       this.AcceptButton = this.OKButton;
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-      this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
       this.CancelButton = this.OKButton;
-      this.ClientSize = new System.Drawing.Size(440, 142);
+      this.ClientSize = new System.Drawing.Size(412, 142);
+      this.Controls.Add(this.logo);
       this.Controls.Add(this.lblLicenseLink);
       this.Controls.Add(this.lblLicense);
       this.Controls.Add(this.lblVersion);
@@ -140,6 +150,7 @@ namespace AEMManager {
       this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
       this.Text = "Info";
       this.Load += new System.EventHandler(this.InfoDialog_Load);
+      ((System.ComponentModel.ISupportInitialize)(this.logo)).EndInit();
       this.ResumeLayout(false);
       this.PerformLayout();
 
@@ -154,5 +165,6 @@ namespace AEMManager {
     private System.Windows.Forms.Label lblVersion;
         private System.Windows.Forms.Label lblLicense;
         private System.Windows.Forms.LinkLabel lblLicenseLink;
-    }
+    private System.Windows.Forms.PictureBox logo;
+  }
 }

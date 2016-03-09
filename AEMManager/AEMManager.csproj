@@ -179,6 +179,7 @@
     <Content Include="icons\aem.ico">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Include="resources\wcmio-logo.png" />
     <EmbeddedResource Include="resources\iconset_inv_num\0.ico" />
     <EmbeddedResource Include="resources\iconset_inv_num\1.ico" />
     <EmbeddedResource Include="resources\iconset_inv_num\2.ico" />

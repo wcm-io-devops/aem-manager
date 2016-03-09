@@ -36,6 +36,9 @@
     </UI>
     <UIRef Id="WixUI_Common" />
 
+    <WixVariable Id="WixUIBannerBmp" Value="resources\WixUIBannerBmp.bmp" />
+    <WixVariable Id="WixUIDialogBmp" Value="resources\WixUIDialogBmp.bmp" />
+
   </Product>
 
 	<Fragment>

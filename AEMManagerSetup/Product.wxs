@@ -44,7 +44,7 @@
       <Component Id="AEMManager" Guid="06A70F65-1D3A-4952-97B3-3215718A63BC">
         <File Id="AEMManager.exe" Name="AEMManager.exe" DiskId="1" Source="../AEMManager/bin/Release/AEMManager.exe" KeyPath="yes">
           <Shortcut Id="AEMManagerShortcutStartupFolder" Directory="StartupFolder" Name="AEM Manager" Advertise="yes">
-            <Icon Id="AEMManager.exe" SourceFile="../AEMManager/bin/Release/AEMManager.exe" />
+            <Icon Id="aem.ico" SourceFile="../AEMManager/icons/aem.ico" />
           </Shortcut>
         </File>
         <File Id="AEMManager.exe.config" Name="AEMManager.exe.config" DiskId="1" Source="../AEMManager/bin/Release/AEMManager.exe.config"/>

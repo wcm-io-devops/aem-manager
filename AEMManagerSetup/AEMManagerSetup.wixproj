@@ -23,6 +23,12 @@
   <ItemGroup>
     <Compile Include="Product.wxs" />
   </ItemGroup>
+  <ItemGroup>
+    <WixExtension Include="WixUIExtension">
+      <HintPath>$(WixExtDir)\WixUIExtension.dll</HintPath>
+      <Name>WixUIExtension</Name>
+    </WixExtension>
+  </ItemGroup>
   <Import Project="$(WixTargetsPath)" />
   <!--
 	To modify your build process, add your task inside one of the targets below and uncomment it.
@@ -32,7 +38,6 @@
 	<Target Name="AfterBuild">
 	</Target>
 	-->
-
   <!-- Include version number in generated MSI file name -->
   <!-- Solution from https://www.talksharp.com/wix-toolset-append-product-version -->
   <Target Name="BeforeBuild">
@@ -53,5 +58,4 @@
       <Output TaskParameter="Value" PropertyName="TargetPdbName" />
     </CreateProperty>
   </Target>
-
 </Project>

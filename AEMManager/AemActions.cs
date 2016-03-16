@@ -53,6 +53,11 @@ namespace AEMManager {
       item.Click += new EventHandler(OpenFelixConsole);
       menuItems.Add(item);
 
+      item = new MenuItem();
+      item.Text = "Open Folder";
+      item.Click += new EventHandler(OpenFolder);
+      menuItems.Add(item);
+
       if (pInstance.AemInstanceType == AemInstanceType.AEM54) {
         item = new MenuItem();
         item.Text = "Open Servlet Engine Admin";
@@ -117,6 +122,20 @@ namespace AEMManager {
         return;
       }
       OpenUrl(instance.UrlWithContextPath + "/system/console", instance);
+    }
+
+    private static void OpenFolder(object sender, EventArgs e) {
+      AemInstance instance = Program.GetActionInstance(sender);
+      if (instance == null) {
+        return;
+      }
+
+      string folder = instance.PathWithoutFilename;
+      if (!Directory.Exists(folder)) {
+        return;
+      }
+      mLog.Info("Open Folder: " + folder);
+      System.Diagnostics.Process.Start(folder);
     }
 
     private static void OpenServletEngineAdmin(object sender, EventArgs e) {

@@ -66,11 +66,19 @@ namespace AEMManager.Util {
         key.Close();
       }
 
-      if (pfrm.Left > SystemInformation.VirtualScreen.Width - 50) {
-        pfrm.Left = left > 0 ? left : 10;
+      if (pfrm.FormBorderStyle == FormBorderStyle.Sizable || pfrm.FormBorderStyle == FormBorderStyle.SizableToolWindow) {
+        if (pfrm.Width > SystemInformation.VirtualScreen.Width) {
+          pfrm.Width = SystemInformation.VirtualScreen.Width - 20;
+        }
+        if (pfrm.Height > SystemInformation.VirtualScreen.Height) {
+          pfrm.Height = SystemInformation.VirtualScreen.Height - 20;
+        }
       }
-      if (pfrm.Top > SystemInformation.VirtualScreen.Height - 50) {
-        pfrm.Top = top > 0 ? top : 10;
+      if (pfrm.Left + pfrm.Width > SystemInformation.VirtualScreen.Width) {
+        pfrm.Left = SystemInformation.VirtualScreen.Width - pfrm.Width - 10;
+      }
+      if (pfrm.Top + pfrm.Height > SystemInformation.VirtualScreen.Height) {
+        pfrm.Top = SystemInformation.VirtualScreen.Height - pfrm.Height - 10;
       }
 
     }

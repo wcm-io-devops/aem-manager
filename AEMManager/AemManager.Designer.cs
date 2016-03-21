@@ -36,8 +36,6 @@ namespace AEMManager {
       this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
       this.copyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
       this.removeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-      this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
-      this.setSelectedToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
       this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
       this.infoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
       this.openFileDialogJar = new System.Windows.Forms.OpenFileDialog();
@@ -97,9 +95,7 @@ namespace AEMManager {
             this.addToolStripMenuItem,
             this.editToolStripMenuItem,
             this.copyToolStripMenuItem,
-            this.removeToolStripMenuItem,
-            this.toolStripMenuItem2,
-            this.setSelectedToolStripMenuItem});
+            this.removeToolStripMenuItem});
       this.instancesToolStripMenuItem.Name = "instancesToolStripMenuItem";
       this.instancesToolStripMenuItem.Size = new System.Drawing.Size(66, 20);
       this.instancesToolStripMenuItem.Text = "&Instances";
@@ -107,42 +103,30 @@ namespace AEMManager {
       // addToolStripMenuItem
       // 
       this.addToolStripMenuItem.Name = "addToolStripMenuItem";
-      this.addToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
+      this.addToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
       this.addToolStripMenuItem.Text = "&Add...";
       this.addToolStripMenuItem.Click += new System.EventHandler(this.addToolStripMenuItem_Click);
       // 
       // editToolStripMenuItem
       // 
       this.editToolStripMenuItem.Name = "editToolStripMenuItem";
-      this.editToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
+      this.editToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
       this.editToolStripMenuItem.Text = "&Edit...";
       this.editToolStripMenuItem.Click += new System.EventHandler(this.editToolStripMenuItem_Click);
       // 
       // copyToolStripMenuItem
       // 
       this.copyToolStripMenuItem.Name = "copyToolStripMenuItem";
-      this.copyToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
+      this.copyToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
       this.copyToolStripMenuItem.Text = "&Duplicate...";
       this.copyToolStripMenuItem.Click += new System.EventHandler(this.copyToolStripMenuItem_Click);
       // 
       // removeToolStripMenuItem
       // 
       this.removeToolStripMenuItem.Name = "removeToolStripMenuItem";
-      this.removeToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
+      this.removeToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
       this.removeToolStripMenuItem.Text = "&Remove";
       this.removeToolStripMenuItem.Click += new System.EventHandler(this.removeToolStripMenuItem_Click);
-      // 
-      // toolStripMenuItem2
-      // 
-      this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-      this.toolStripMenuItem2.Size = new System.Drawing.Size(131, 6);
-      // 
-      // setSelectedToolStripMenuItem
-      // 
-      this.setSelectedToolStripMenuItem.Name = "setSelectedToolStripMenuItem";
-      this.setSelectedToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
-      this.setSelectedToolStripMenuItem.Text = "&Set Selected";
-      this.setSelectedToolStripMenuItem.Click += new System.EventHandler(this.setShowInTaskbarToolStripMenuItem_Click);
       // 
       // toolStripMenuItem1
       // 
@@ -221,8 +205,6 @@ namespace AEMManager {
     private System.Windows.Forms.ToolStripMenuItem editToolStripMenuItem;
     private System.Windows.Forms.ToolStripMenuItem removeToolStripMenuItem;
     private System.Windows.Forms.ToolStripMenuItem copyToolStripMenuItem;
-    private System.Windows.Forms.ToolStripSeparator toolStripMenuItem2;
-    private System.Windows.Forms.ToolStripMenuItem setSelectedToolStripMenuItem;
     private System.Windows.Forms.ToolStripMenuItem preferencesToolStripMenuItem;
     private System.Windows.Forms.ToolStripSeparator toolStripMenuItem3;
     private System.Windows.Forms.OpenFileDialog openFileDialogJar;

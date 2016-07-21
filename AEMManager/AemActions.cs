@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using System.IO;
 using System.Net;
@@ -475,49 +476,15 @@ namespace AEMManager {
       List<MenuItem> menuItems = new List<MenuItem>();
       MenuItem item;
 
+      // show dynamic list of current logfiles
       item = new MenuItem();
-      item.Text = "Error Log";
-      item.Click += new EventHandler(LogError);
+      item.Text = "Open logfile...";
+      item.Popup += LogFilesItem_Popup;
+      item.MenuItems.Add(new MenuItem());
       menuItems.Add(item);
 
       item = new MenuItem();
-      item.Text = "Request Log";
-      item.Click += new EventHandler(LogRequest);
-      menuItems.Add(item);
-
-      if (pInstance.AemInstanceType != AemInstanceType.AEM54) {
-        item = new MenuItem();
-        item.Text = "Access Log";
-        item.Click += new EventHandler(LogAccess);
-        menuItems.Add(item);
-      }
-
-      if (pInstance.AemInstanceType == AemInstanceType.AEM54) {
-        item = new MenuItem();
-        item.Text = "Server Log";
-        item.Click += new EventHandler(LogServer);
-        menuItems.Add(item);
-      }
-
-      item = new MenuItem();
-      item.Text = "StdOut Log";
-      item.Click += new EventHandler(LogStdOut);
-      menuItems.Add(item);
-
-      item = new MenuItem();
-      item.Text = "StdErr Log";
-      item.Click += new EventHandler(LogStdErr);
-      menuItems.Add(item);
-
-      if (pInstance.AemInstanceType == AemInstanceType.AEM54) {
-        item = new MenuItem();
-        item.Text = "CRX Log";
-        item.Click += new EventHandler(LogCRX);
-        menuItems.Add(item);
-      }
-
-      item = new MenuItem();
-      item.Text = "Console Window";
+      item.Text = "Console window";
       item.Click += new EventHandler(ShowConsoleWindow);
       menuItems.Add(item);
 
@@ -528,60 +495,45 @@ namespace AEMManager {
       pParent.AddRange(menuItems.ToArray());
     }
 
-    private static void LogError(object sender, EventArgs e) {
+    private static void LogFilesItem_Popup(object sender, EventArgs e) {
       AemInstance instance = Program.GetActionInstance(sender);
       if (instance == null) {
         return;
       }
-      OpenLogViewer(instance.PathWithoutFilename + "\\crx-quickstart\\logs\\error.log", instance.Name + " - error.log");
+
+      MenuItem logFilesItem = (MenuItem)sender;
+      logFilesItem.MenuItems.Clear();
+
+      string logsPath = instance.PathWithoutFilename + @"\crx-quickstart\logs";
+      if (Directory.Exists(logsPath)) {
+        string[] logFiles = Directory.GetFiles(logsPath);
+        if (logFiles.Length > 0) {
+
+          foreach (string logFilePath in logFiles) {
+            string logFile = logFilePath.Substring(logFilePath.LastIndexOf(@"\") + 1);
+            // skip logfiles with suffixes like ".2016-07-19", "", "-2016-07-12.log", "-4108.log"
+            if (Regex.Match(logFile, @"^.*\.\d+\-\d+\-\d+$").Success
+                  || Regex.Match(logFile, @"^.*\-\d+(\-\d+\-\d+)?\.log$").Success) {
+              continue;
+            }
+
+            MenuItem item = new MenuItem();
+            item.Text = logFile;
+            item.Click += new EventHandler(OpenLogFile);
+            item.Tag = instance;
+            logFilesItem.MenuItems.Add(item);
+          }
+        }
+      }
     }
 
-    private static void LogRequest(object sender, EventArgs e) {
+    private static void OpenLogFile(object sender, EventArgs e) {
+      MenuItem item = (MenuItem)sender;
       AemInstance instance = Program.GetActionInstance(sender);
       if (instance == null) {
         return;
       }
-      OpenLogViewer(instance.PathWithoutFilename + "\\crx-quickstart\\logs\\request.log", instance.Name + " - request.log");
-    }
-
-    private static void LogAccess(object sender, EventArgs e) {
-      AemInstance instance = Program.GetActionInstance(sender);
-      if (instance == null) {
-        return;
-      }
-      OpenLogViewer(instance.PathWithoutFilename + "\\crx-quickstart\\logs\\access.log", instance.Name + " - access.log");
-    }
-
-    private static void LogServer(object sender, EventArgs e) {
-      AemInstance instance = Program.GetActionInstance(sender);
-      if (instance == null) {
-        return;
-      }
-      OpenLogViewer(instance.PathWithoutFilename + "\\crx-quickstart\\logs\\server.log", instance.Name + " - server.log");
-    }
-
-    private static void LogStdOut(object sender, EventArgs e) {
-      AemInstance instance = Program.GetActionInstance(sender);
-      if (instance == null) {
-        return;
-      }
-      OpenLogViewer(instance.PathWithoutFilename + "\\crx-quickstart\\logs\\stdout.log", instance.Name + " - stdout.log");
-    }
-
-    private static void LogStdErr(object sender, EventArgs e) {
-      AemInstance instance = Program.GetActionInstance(sender);
-      if (instance == null) {
-        return;
-      }
-      OpenLogViewer(instance.PathWithoutFilename + "\\crx-quickstart\\logs\\stderr.log", instance.Name + " - stderr.log");
-    }
-
-    private static void LogCRX(object sender, EventArgs e) {
-      AemInstance instance = Program.GetActionInstance(sender);
-      if (instance == null) {
-        return;
-      }
-      OpenLogViewer(instance.PathWithoutFilename + "\\crx-quickstart\\logs\\crx\\error.log", instance.Name + " - crx_error.log");
+      OpenLogViewer(instance.PathWithoutFilename + @"\crx-quickstart\logs\" + item.Text, instance.Name + " - " + item.Text);
     }
 
     private static void ShowConsoleWindow(object sender, EventArgs e) {

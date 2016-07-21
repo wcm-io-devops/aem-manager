@@ -480,7 +480,7 @@ namespace AEMManager {
       item = new MenuItem();
       item.Text = "Open logfile...";
       item.Popup += LogFilesItem_Popup;
-      item.MenuItems.Add(new MenuItem());
+      item.MenuItems.Add(new MenuItem("-- No logfiles --"));
       menuItems.Add(item);
 
       item = new MenuItem();
@@ -508,7 +508,6 @@ namespace AEMManager {
       if (Directory.Exists(logsPath)) {
         string[] logFiles = Directory.GetFiles(logsPath);
         if (logFiles.Length > 0) {
-
           foreach (string logFilePath in logFiles) {
             string logFile = logFilePath.Substring(logFilePath.LastIndexOf(@"\") + 1);
             // skip logfiles with suffixes like ".2016-07-19", "", "-2016-07-12.log", "-4108.log"
@@ -524,6 +523,10 @@ namespace AEMManager {
             logFilesItem.MenuItems.Add(item);
           }
         }
+      }
+
+      if (logFilesItem.MenuItems.Count == 0) {
+        logFilesItem.MenuItems.Add(new MenuItem("-- No logfiles --"));
       }
     }
 

@@ -3,10 +3,9 @@ using System.Collections.Generic;
 using System.Text;
 using System.Diagnostics;
 using System.Windows.Forms;
-using System.Drawing;
-using System.Reflection;
 using Microsoft.Win32;
 using AEMManager.Util;
+using System.Net;
 
 namespace AEMManager {
 
@@ -796,6 +795,23 @@ namespace AEMManager {
       get {
         return mConsoleOutputWindow;
       }
+    }
+
+    /// <summary>
+    /// Creates a web request with preemptive authentication.
+    /// </summary>
+    /// <param name="instance">AEM instance</param>
+    /// <param name="url">URL</param>
+    /// <returns></returns>
+    public WebRequest WebRequestCreate(string url) {
+      WebRequest request = WebRequest.Create(url);
+
+      // "manual" preemptive authentication
+      string authInfo = this.Username + ":" + this.Password;
+      authInfo = Convert.ToBase64String(Encoding.Default.GetBytes(authInfo));
+      request.Headers["Authorization"] = "Basic " + authInfo;
+
+      return request;
     }
 
   }

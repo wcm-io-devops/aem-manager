@@ -40,11 +40,6 @@ namespace AEMManager {
       menuItems.Add(item);
 
       item = new MenuItem();
-      item.Text = "Open CRX Content Explorer";
-      item.Click += new EventHandler(OpenCRXContentExplorer);
-      menuItems.Add(item);
-
-      item = new MenuItem();
       item.Text = "Open CRXDE Lite";
       item.Click += new EventHandler(OpenCRXDELite);
       menuItems.Add(item);
@@ -89,18 +84,6 @@ namespace AEMManager {
       string url = instance.UrlWithContextPath + "/crx/explorer/";
       if (instance.AemInstanceType == AemInstanceType.AEM54) {
         url = instance.UrlWithoutContextPath + "/crx/";
-      }
-      OpenUrl(url, instance);
-    }
-
-    private static void OpenCRXContentExplorer(object sender, EventArgs e) {
-      AemInstance instance = Program.GetActionInstance(sender);
-      if (instance == null) {
-        return;
-      }
-      string url = instance.UrlWithContextPath + "/crx/explorer/browser/";
-      if (instance.AemInstanceType == AemInstanceType.AEM54) {
-        url = instance.UrlWithoutContextPath + "/crx/browser/index.jsp";
       }
       OpenUrl(url, instance);
     }

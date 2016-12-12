@@ -40,13 +40,8 @@ namespace AEMManager {
       menuItems.Add(item);
 
       item = new MenuItem();
-      item.Text = "Open CRX Content Explorer";
-      item.Click += new EventHandler(OpenCRXContentExplorer);
-      menuItems.Add(item);
-
-      item = new MenuItem();
       item.Text = "Open CRXDE Lite";
-      item.Click += new EventHandler(OpenCRXDE);
+      item.Click += new EventHandler(OpenCRXDELite);
       menuItems.Add(item);
 
       item = new MenuItem();
@@ -93,26 +88,20 @@ namespace AEMManager {
       OpenUrl(url, instance);
     }
 
-    private static void OpenCRXContentExplorer(object sender, EventArgs e) {
+    private static void OpenCRXDELite(object sender, EventArgs e) {
       AemInstance instance = Program.GetActionInstance(sender);
       if (instance == null) {
         return;
       }
-      string url = instance.UrlWithContextPath + "/crx/explorer/browser/";
-      if (instance.AemInstanceType == AemInstanceType.AEM54) {
-        url = instance.UrlWithoutContextPath + "/crx/browser/index.jsp";
-      }
-      OpenUrl(url, instance);
-    }
 
-    private static void OpenCRXDE(object sender, EventArgs e) {
-      AemInstance instance = Program.GetActionInstance(sender);
-      if (instance == null) {
-        return;
-      }
       string url = instance.UrlWithContextPath + "/crx/de/";
       if (instance.AemInstanceType == AemInstanceType.AEM54) {
         url = instance.UrlWithoutContextPath + "/crx/de/";
+      }
+      else {
+        // check if DavEx servlet is enabled before opening CRXDE lite
+        SlingDavExServlet davEx = new SlingDavExServlet(instance);
+        davEx.CheckDavExStatus();
       }
       OpenUrl(url, instance);
     }
@@ -335,7 +324,7 @@ namespace AEMManager {
 
         pInstance.ConsoleOutputWindow.AppendConsoleLog("Shutting down instance...");
 
-        WebRequest request = WebRequestCreate(pInstance, shutdownUrl);
+        WebRequest request = pInstance.WebRequestCreate(shutdownUrl);
         request.Method = "POST";
         request.Timeout = 3000;
 
@@ -480,7 +469,7 @@ namespace AEMManager {
       item = new MenuItem();
       item.Text = "Open logfile...";
       item.Popup += LogFilesItem_Popup;
-      item.MenuItems.Add(new MenuItem());
+      item.MenuItems.Add(new MenuItem("-- No logfiles --"));
       menuItems.Add(item);
 
       item = new MenuItem();
@@ -508,7 +497,6 @@ namespace AEMManager {
       if (Directory.Exists(logsPath)) {
         string[] logFiles = Directory.GetFiles(logsPath);
         if (logFiles.Length > 0) {
-
           foreach (string logFilePath in logFiles) {
             string logFile = logFilePath.Substring(logFilePath.LastIndexOf(@"\") + 1);
             // skip logfiles with suffixes like ".2016-07-19", "", "-2016-07-12.log", "-4108.log"
@@ -524,6 +512,10 @@ namespace AEMManager {
             logFilesItem.MenuItems.Add(item);
           }
         }
+      }
+
+      if (logFilesItem.MenuItems.Count == 0) {
+        logFilesItem.MenuItems.Add(new MenuItem("-- No logfiles --"));
       }
     }
 
@@ -594,7 +586,7 @@ namespace AEMManager {
       try {
         mLog.Debug("Get bundle list from URL: " + bundleListUrl);
 
-        WebRequest request = WebRequestCreate(pInstance, bundleListUrl);
+        WebRequest request = pInstance.WebRequestCreate(bundleListUrl);
         request.Method = "GET";
         request.Timeout = AEMManager.Properties.Settings.Default.BundleListTimeout;
 
@@ -659,23 +651,6 @@ namespace AEMManager {
       mLog.Debug("Status: " + status + ", result: " + bundleStatus + " (response time: " + pRepsonseTime + "ms)");
 
       return bundleStatus;
-    }
-
-    /// <summary>
-    /// Creates a web request with preemptive authentication.
-    /// </summary>
-    /// <param name="instance">AEM instance</param>
-    /// <param name="url">URL</param>
-    /// <returns></returns>
-    private static WebRequest WebRequestCreate(AemInstance instance, string url) {
-      WebRequest request = WebRequest.Create(url);
-
-      // "manual" preemptive authentication
-      string authInfo = instance.Username + ":" + instance.Password;
-      authInfo = Convert.ToBase64String(Encoding.Default.GetBytes(authInfo));
-      request.Headers["Authorization"] = "Basic " + authInfo;
-
-      return request;
     }
 
     private static Hashtable GetHashtable(object pJsonObject) {

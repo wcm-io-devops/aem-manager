@@ -91,13 +91,8 @@ namespace AEMManager {
       menuItems.Add(item);
 
       item = new MenuItem();
-      item.Text = "AEM JavaDoc API Docs";
-      item.Click += new EventHandler(AEMServerAPIDocs_Click);
-      menuItems.Add(item);
-
-      item = new MenuItem();
-      item.Text = "AEM ExtJS Widget Docs";
-      item.Click += new EventHandler(AEMExtJSWidgetDocs_Info);
+      item.Text = "AEM Reference Materials";
+      item.Click += new EventHandler(AEMRefDocs_Click);
       menuItems.Add(item);
 
       item = new MenuItem("-");
@@ -123,15 +118,9 @@ namespace AEMManager {
       p.Start();
     }
 
-    static void AEMServerAPIDocs_Click(object sender, EventArgs e) {
+    static void AEMRefDocs_Click(object sender, EventArgs e) {
       System.Diagnostics.Process p = new System.Diagnostics.Process();
-      p.StartInfo.FileName = "https://docs.adobe.com/docs/en/cq/current/javadoc/index.html";
-      p.Start();
-    }
-
-    static void AEMExtJSWidgetDocs_Info(object sender, EventArgs e) {
-      System.Diagnostics.Process p = new System.Diagnostics.Process();
-      p.StartInfo.FileName = "https://docs.adobe.com/docs/en/cq/current/widgets-api/index.html";
+      p.StartInfo.FileName = "https://docs.adobe.com/docs/en/aem/6-2/develop/ref.html";
       p.Start();
     }
 

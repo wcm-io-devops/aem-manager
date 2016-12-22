@@ -42,9 +42,8 @@ namespace AEMManager {
       try {
         mLog.Debug("Get bundle list from URL: " + davExUrl);
 
-        WebRequest request = instance.WebRequestCreate(davExUrl);
+        HttpWebRequest request = instance.WebRequestCreate(davExUrl);
         request.Method = "GET";
-        request.Timeout = AEMManager.Properties.Settings.Default.BundleListTimeout;
 
         responseTimeStopwatch.Start();
         using (WebResponse response = request.GetResponse()) {
@@ -82,9 +81,8 @@ namespace AEMManager {
         ASCIIEncoding ascii = new ASCIIEncoding();
         byte[] postBytes = ascii.GetBytes(postData.ToString());
 
-        WebRequest request = instance.WebRequestCreate(configPostUrl);
+        HttpWebRequest request = instance.WebRequestCreate(configPostUrl);
         request.Method = "POST";
-        request.Timeout = AEMManager.Properties.Settings.Default.BundleListTimeout;
         request.ContentType = "application/x-www-form-urlencoded";
         request.ContentLength = postBytes.Length;
 

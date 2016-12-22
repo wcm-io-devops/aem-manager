@@ -803,13 +803,20 @@ namespace AEMManager {
     /// <param name="instance">AEM instance</param>
     /// <param name="url">URL</param>
     /// <returns></returns>
-    public WebRequest WebRequestCreate(string url) {
-      WebRequest request = WebRequest.Create(url);
+    public HttpWebRequest WebRequestCreate(string url) {
+      HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
 
       // "manual" preemptive authentication
       string authInfo = this.Username + ":" + this.Password;
       authInfo = Convert.ToBase64String(Encoding.Default.GetBytes(authInfo));
       request.Headers["Authorization"] = "Basic " + authInfo;
+
+      // default timeouts
+      request.Timeout = AEMManager.Properties.Settings.Default.HttpTimeout;
+      request.ReadWriteTimeout = AEMManager.Properties.Settings.Default.HttpTimeout;
+
+      // disable keep alive
+      request.KeepAlive = false;
 
       return request;
     }

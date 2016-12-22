@@ -43,15 +43,6 @@ namespace AEMManager.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("400")]
-        public int BundleListTimeout {
-            get {
-                return ((int)(this["BundleListTimeout"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("2000")]
         public int ReportStatusChangeTimeout {
             get {
@@ -74,6 +65,24 @@ namespace AEMManager.Properties {
         public string JProfilerAgent {
             get {
                 return ((string)(this["JProfilerAgent"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("3000")]
+        public int BundleListTimeout {
+            get {
+                return ((int)(this["BundleListTimeout"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("2000")]
+        public int HttpTimeout {
+            get {
+                return ((int)(this["HttpTimeout"]));
             }
         }
     }

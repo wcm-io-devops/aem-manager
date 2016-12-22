@@ -324,9 +324,8 @@ namespace AEMManager {
 
         pInstance.ConsoleOutputWindow.AppendConsoleLog("Shutting down instance...");
 
-        WebRequest request = pInstance.WebRequestCreate(shutdownUrl);
+        HttpWebRequest request = pInstance.WebRequestCreate(shutdownUrl);
         request.Method = "POST";
-        request.Timeout = 3000;
 
         request.GetResponse();
       }
@@ -586,9 +585,10 @@ namespace AEMManager {
       try {
         mLog.Debug("Get bundle list from URL: " + bundleListUrl);
 
-        WebRequest request = pInstance.WebRequestCreate(bundleListUrl);
+        HttpWebRequest request = pInstance.WebRequestCreate(bundleListUrl);
         request.Method = "GET";
         request.Timeout = AEMManager.Properties.Settings.Default.BundleListTimeout;
+        request.ReadWriteTimeout = AEMManager.Properties.Settings.Default.BundleListTimeout;
 
         responseTimeStopwatch.Start();
         using (WebResponse response = request.GetResponse()) {

@@ -8,9 +8,6 @@
     <Setting Name="ProcessNameViaShortcut" Type="System.Boolean" Scope="Application">
       <Value Profile="(Default)">True</Value>
     </Setting>
-    <Setting Name="BundleListTimeout" Type="System.Int32" Scope="Application">
-      <Value Profile="(Default)">400</Value>
-    </Setting>
     <Setting Name="ReportStatusChangeTimeout" Type="System.Int32" Scope="Application">
       <Value Profile="(Default)">2000</Value>
     </Setting>
@@ -19,6 +16,12 @@
     </Setting>
     <Setting Name="JProfilerAgent" Type="System.String" Scope="Application">
       <Value Profile="(Default)">C:\Programme\jprofiler7\bin\agent.jar</Value>
+    </Setting>
+    <Setting Name="BundleListTimeout" Type="System.Int32" Scope="Application">
+      <Value Profile="(Default)">3000</Value>
+    </Setting>
+    <Setting Name="HttpTimeout" Type="System.Int32" Scope="Application">
+      <Value Profile="(Default)">2000</Value>
     </Setting>
   </Settings>
 </SettingsFile>

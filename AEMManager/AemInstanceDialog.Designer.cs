@@ -768,9 +768,9 @@ namespace AEMManager {
       this.chkRunmodeSampleContent.AutoSize = true;
       this.chkRunmodeSampleContent.Location = new System.Drawing.Point(80, 112);
       this.chkRunmodeSampleContent.Name = "chkRunmodeSampleContent";
-      this.chkRunmodeSampleContent.Size = new System.Drawing.Size(287, 17);
+      this.chkRunmodeSampleContent.Size = new System.Drawing.Size(226, 17);
       this.chkRunmodeSampleContent.TabIndex = 15;
-      this.chkRunmodeSampleContent.Text = "Install AEM Sample Content (Geometrixx) on first startup";
+      this.chkRunmodeSampleContent.Text = "Install AEM Sample Content on first startup";
       this.chkRunmodeSampleContent.UseVisualStyleBackColor = true;
       // 
       // AemInstanceDialog

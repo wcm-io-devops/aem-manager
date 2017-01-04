@@ -10,7 +10,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("wcm.io")]
 [assembly: AssemblyProduct("wcm.io AEM Manager")]
-[assembly: AssemblyCopyright("©2010-2016 pro!vision GmbH, wcm.io")]
+[assembly: AssemblyCopyright("©2010-2017 pro!vision GmbH, wcm.io")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

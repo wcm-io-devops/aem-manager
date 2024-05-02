@@ -3,10 +3,6 @@ wcm.io AEM Manager for Windows
 
 Taskbar application for managing AEM instances on Windows.
 
-There is also a version for Mac OS X:
-https://github.com/wcm-io-devops/aem-manager-osx
-
-
 Overview
 ---------
 
@@ -64,10 +60,3 @@ From the AEM Manager window you can configure preferences via File > Preferences
 It is recommended to install [Otros Log Viewer](https://github.com/otros-systems/otroslogviewer) and configure it in the preference dialog.
 
 Here you will find a customized Log-importer configuration so Otros Log Viewer will understand the default AEM log file format by default: [otros-config](https://github.com/wcm-io/wcm-io-tooling/tree/develop/misc/log-analysis/otros-config).
-
-
-
-Issue Tracking
---------------
-
-For bugs and enhancement requests please file a ticket at https://wcm-io.atlassian.net/projects/WDEVOP

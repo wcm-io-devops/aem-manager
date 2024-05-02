@@ -1,5 +1,4 @@
 ﻿using System.Reflection;
-using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
 // General Information about an assembly is controlled through the following
@@ -10,7 +9,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("wcm.io")]
 [assembly: AssemblyProduct("wcm.io AEM Manager")]
-[assembly: AssemblyCopyright("©2010-2022 diva-e, wcm.io")]
+[assembly: AssemblyCopyright("©2010-2024 diva-e, wcm.io")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

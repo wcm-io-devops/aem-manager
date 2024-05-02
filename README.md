@@ -16,7 +16,7 @@ Installation
 * Execute the Windows installer `AEMManagerSetup.msi`
 * The AEM manager installs automatically an places an "AEM Manager" shortcut in the Startup folder of the start menu
 
-Tested with Windows 7, Windows 8 and Windows 10.
+Tested with Windows 10 and Windows 11.
 
 
 Features

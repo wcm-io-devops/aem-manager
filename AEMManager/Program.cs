@@ -114,13 +114,13 @@ namespace AEMManager {
 
     static void AEMDocumentation_Click(object sender, EventArgs e) {
       System.Diagnostics.Process p = new System.Diagnostics.Process();
-      p.StartInfo.FileName = "https://docs.adobe.com/content/help/en/experience-cloud/user-guides/home.html#icon-adobe-experience-manager";
+      p.StartInfo.FileName = "https://experienceleague.adobe.com/en/docs/experience-manager-cloud-service";
       p.Start();
     }
 
     static void AEMRefDocs_Click(object sender, EventArgs e) {
       System.Diagnostics.Process p = new System.Diagnostics.Process();
-      p.StartInfo.FileName = "https://docs.adobe.com/content/help/en/experience-manager-65/developing/introduction/reference-materials.html";
+      p.StartInfo.FileName = "https://experienceleague.adobe.com/en/docs/experience-manager-cloud-service/content/implementing/developing/reference-materials";
       p.Start();
     }
 

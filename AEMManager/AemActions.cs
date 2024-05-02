@@ -12,6 +12,7 @@ using System.Threading;
 using System.Management;
 using Microsoft.Win32;
 using AEMManager.Util;
+using System.Linq;
 
 namespace AEMManager {
 
@@ -633,6 +634,13 @@ namespace AEMManager {
     private static BundleStatus GetCombinedBundleStatus(object pJsonObject, long pRepsonseTime) {
       BundleStatus bundleStatus = BundleStatus.RUNNING;
 
+      // filter out bundle names as configured in preferences
+      RegistryKey preferencesKey = RegistryUtil.GetUserKey("Preferences");
+      string bundleFilterString = (string)preferencesKey.GetValue("BundleFilter", "");
+      HashSet<string> bundleFilter = bundleFilterString.Split(new char[] { '\n', ',', ';' })
+        .Select(item => item.Trim())
+        .ToHashSet();
+
       Hashtable root = GetHashtable(pJsonObject);
       string status = (string)root["status"];
 
@@ -641,7 +649,7 @@ namespace AEMManager {
         Hashtable bundle = GetHashtable(dataItem);
         string state = (string)bundle["state"];
         if (!string.IsNullOrEmpty(state)) {
-          if (!(state.Equals("Active") || state.Equals("Fragment"))) {
+          if (!(state.Equals("Active") || state.Equals("Fragment") || bundleFilter.Contains((string)bundle["symbolicName"]))) {
             bundleStatus = BundleStatus.STARTING_STOPPING;
             break;
           }

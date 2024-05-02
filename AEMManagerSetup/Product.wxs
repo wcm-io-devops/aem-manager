@@ -1,9 +1,6 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
-	<Product Id="*" Name="AEM Manager" Language="1033" UpgradeCode="58391141-13e1-403c-9fa6-3759099bdb29"
-           Manufacturer="wcm.io"
-           Version="2.3.6.0">
-		<Package InstallerVersion="200" Compressed="yes" InstallScope="perMachine" />
+﻿<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs">
+	<Package Name="AEM Manager" Language="1033" UpgradeCode="58391141-13e1-403c-9fa6-3759099bdb29" Manufacturer="wcm.io" Version="2.3.6.0" InstallerVersion="200">
+		
 
 		<MajorUpgrade DowngradeErrorMessage="A newer version of AEM Manager is already installed." />
 		<MediaTemplate EmbedCab="yes" />
@@ -20,7 +17,7 @@
 
       <TextStyle Id="WixUI_Font_Normal" FaceName="Tahoma" Size="8" />
       <TextStyle Id="WixUI_Font_Bigger" FaceName="Tahoma" Size="9" Bold="yes" />
-      <TextStyle Id="WixUI_Font_Title"  FaceName="Tahoma" Size="9" Bold="yes" />
+      <TextStyle Id="WixUI_Font_Title" FaceName="Tahoma" Size="9" Bold="yes" />
 
       <Property Id="DefaultUIFont" Value="WixUI_Font_Normal" />
 
@@ -30,7 +27,7 @@
       <DialogRef Id="FatalError" />
       <DialogRef Id="UserExit" />
 
-      <Publish Dialog="ExitDialog" Control="Finish" Event="EndDialog" Value="Return" Order="999">1</Publish>
+      <Publish Dialog="ExitDialog" Control="Finish" Event="EndDialog" Value="Return" Order="999" />
       <Publish Dialog="WelcomeDlg" Control="Next" Event="EndDialog" Value="Return" Order="2"></Publish>
 
     </UI>
@@ -39,31 +36,26 @@
     <WixVariable Id="WixUIBannerBmp" Value="resources\WixUIBannerBmp.bmp" />
     <WixVariable Id="WixUIDialogBmp" Value="resources\WixUIDialogBmp.bmp" />
 
-  </Product>
+  </Package>
 
-	<Fragment>
-    <Directory Id="TARGETDIR" Name="SourceDir">
-      <Directory Id="ProgramFilesFolder">
-        <Directory Id="INSTALLFOLDER" Name="AEMManager">
-          <Directory Id="IconsFolders" Name="icons"/>
-        </Directory>
-      </Directory>
-      <Directory Id="StartupFolder" Name="Programs"/>
-      <Directory Id="ProgramMenuFolder">
-        <Directory Id="ApplicationProgramsFolder" Name="wcm.io"/>
-      </Directory>
-    </Directory>
-    <DirectoryRef Id="ApplicationProgramsFolder">
+	<Fragment><DirectoryRef Id="ApplicationProgramsFolder">
       <Component Id="ApplicationShortcut" Guid="2DC1B4C5-C409-45D5-AA3F-61049CDBEDF3">
-        <Shortcut Id="ApplicationStartMenuShortcut"
-                  Name="AEM Manager"
-                  Target="[#AEMManager.exe]"
-                  WorkingDirectory="INSTALLFOLDER"/>
-        <RemoveFolder Id="ApplicationProgramsFolder" On="uninstall"/>
-        <RegistryValue Root="HKCU" Key="Software\wcm.io\AEM Manager" Name="installed" Type="integer" Value="1" KeyPath="yes"/>
+        <Shortcut Id="ApplicationStartMenuShortcut" Name="AEM Manager" Target="[#AEMManager.exe]" WorkingDirectory="INSTALLFOLDER" />
+        <RemoveFolder Id="ApplicationProgramsFolder" On="uninstall" />
+        <RegistryValue Root="HKCU" Key="Software\wcm.io\AEM Manager" Name="installed" Type="integer" Value="1" KeyPath="yes" />
       </Component>
     </DirectoryRef>
-  </Fragment>
+  
+      <StandardDirectory Id="ProgramFilesFolder">
+        <Directory Id="INSTALLFOLDER" Name="AEMManager">
+          <Directory Id="IconsFolders" Name="icons" />
+        </Directory>
+      </StandardDirectory>
+      <StandardDirectory Id="StartupFolder" />
+      <StandardDirectory Id="ProgramMenuFolder">
+        <Directory Id="ApplicationProgramsFolder" Name="wcm.io" />
+      </StandardDirectory>
+    </Fragment>
 
 	<Fragment>
     <ComponentGroup Id="ProductComponents" Directory="INSTALLFOLDER">
@@ -73,16 +65,16 @@
             <Icon Id="aem.ico" SourceFile="../AEMManager/icons/aem.ico" />
           </Shortcut>
         </File>
-        <File Id="AEMManager.exe.config" Name="AEMManager.exe.config" DiskId="1" Source="../AEMManager/bin/Release/AEMManager.exe.config"/>
-        <File Id="Interop.IWshRuntimeLibrary.dll" Name="Interop.IWshRuntimeLibrary.dll" DiskId="1" Source="../AEMManager/bin/Release/Interop.IWshRuntimeLibrary.dll"/>
-        <File Id="log4net.dll" Name="log4net.dll" DiskId="1" Source="../AEMManager/bin/Release/log4net.dll"/>
-        <File Id="log4net.xml" Name="log4net.xml" DiskId="1" Source="../AEMManager/bin/Release/log4net.xml"/>
+        <File Id="AEMManager.exe.config" Name="AEMManager.exe.config" DiskId="1" Source="../AEMManager/bin/Release/AEMManager.exe.config" />
+        <File Id="Interop.IWshRuntimeLibrary.dll" Name="Interop.IWshRuntimeLibrary.dll" DiskId="1" Source="../AEMManager/bin/Release/Interop.IWshRuntimeLibrary.dll" />
+        <File Id="log4net.dll" Name="log4net.dll" DiskId="1" Source="../AEMManager/bin/Release/log4net.dll" />
+        <File Id="log4net.xml" Name="log4net.xml" DiskId="1" Source="../AEMManager/bin/Release/log4net.xml" />
       </Component>
     </ComponentGroup>
     <ComponentGroup Id="ProductComponentsIcons" Directory="IconsFolders">
       <Component Id="AEMManagerIcons" Guid="B9B867BB-79C9-4656-A342-88101FEC689C">
-        <File Id="aem.ico" Name="aem.ico" DiskId="1" Source="../AEMManager/bin/Release/icons/aem.ico"/>
-        <File Id="log.ico" Name="log.ico" DiskId="1" Source="../AEMManager/bin/Release/icons/log.ico"/>
+        <File Id="aem.ico" Name="aem.ico" DiskId="1" Source="../AEMManager/bin/Release/icons/aem.ico" />
+        <File Id="log.ico" Name="log.ico" DiskId="1" Source="../AEMManager/bin/Release/icons/log.ico" />
       </Component>
     </ComponentGroup>
   </Fragment>

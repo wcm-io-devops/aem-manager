@@ -11,7 +11,7 @@
     <RootNamespace>AEMManager</RootNamespace>
     <AssemblyName>AEMManager</AssemblyName>
     <ApplicationIcon>resources\default.ico</ApplicationIcon>
-    <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileUpgradeFlags>
     </FileUpgradeFlags>
     <OldToolsVersion>2.0</OldToolsVersion>

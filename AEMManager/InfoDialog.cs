@@ -34,7 +34,7 @@ namespace AEMManager {
 
     private void lblLicenseLink_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e) {
       System.Diagnostics.Process p = new System.Diagnostics.Process();
-      p.StartInfo.FileName = "http://www.apache.org/licenses/LICENSE-2.0";
+      p.StartInfo.FileName = "https://www.apache.org/licenses/LICENSE-2.0";
       p.Start();
     }
 

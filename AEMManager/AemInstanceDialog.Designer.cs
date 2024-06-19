@@ -51,12 +51,9 @@ namespace AEMManager {
       this.chkJProfiler = new System.Windows.Forms.CheckBox();
       this.chkJConsole = new System.Windows.Forms.CheckBox();
       this.chkRemoteProcess = new System.Windows.Forms.CheckBox();
-      this.label2 = new System.Windows.Forms.Label();
       this.label1 = new System.Windows.Forms.Label();
       this.lblMB = new System.Windows.Forms.Label();
-      this.txtMaxPermSizeMb = new System.Windows.Forms.TextBox();
       this.chkHideConfigWizards = new System.Windows.Forms.CheckBox();
-      this.lblMaxPermSizeMb = new System.Windows.Forms.Label();
       this.txtHeapMaxSizeMb = new System.Windows.Forms.TextBox();
       this.lblHeapMaxSizeMb = new System.Windows.Forms.Label();
       this.txtDebugPort = new System.Windows.Forms.TextBox();
@@ -103,9 +100,10 @@ namespace AEMManager {
       // 
       // cmOK
       // 
-      this.cmOK.Location = new System.Drawing.Point(615, 12);
+      this.cmOK.Location = new System.Drawing.Point(922, 18);
+      this.cmOK.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
       this.cmOK.Name = "cmOK";
-      this.cmOK.Size = new System.Drawing.Size(88, 24);
+      this.cmOK.Size = new System.Drawing.Size(132, 37);
       this.cmOK.TabIndex = 34;
       this.cmOK.Text = "OK";
       this.cmOK.UseVisualStyleBackColor = true;
@@ -114,9 +112,10 @@ namespace AEMManager {
       // cmdCancel
       // 
       this.cmdCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-      this.cmdCancel.Location = new System.Drawing.Point(615, 44);
+      this.cmdCancel.Location = new System.Drawing.Point(922, 68);
+      this.cmdCancel.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
       this.cmdCancel.Name = "cmdCancel";
-      this.cmdCancel.Size = new System.Drawing.Size(88, 23);
+      this.cmdCancel.Size = new System.Drawing.Size(132, 35);
       this.cmdCancel.TabIndex = 35;
       this.cmdCancel.Text = "Cancel";
       this.cmdCancel.UseVisualStyleBackColor = true;
@@ -124,82 +123,92 @@ namespace AEMManager {
       // 
       // txtName
       // 
-      this.txtName.Location = new System.Drawing.Point(80, 12);
+      this.txtName.Location = new System.Drawing.Point(120, 18);
+      this.txtName.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
       this.txtName.Name = "txtName";
-      this.txtName.Size = new System.Drawing.Size(256, 20);
+      this.txtName.Size = new System.Drawing.Size(382, 26);
       this.txtName.TabIndex = 1;
       // 
       // lblName
       // 
       this.lblName.AutoSize = true;
-      this.lblName.Location = new System.Drawing.Point(8, 16);
+      this.lblName.Location = new System.Drawing.Point(12, 25);
+      this.lblName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
       this.lblName.Name = "lblName";
-      this.lblName.Size = new System.Drawing.Size(35, 13);
+      this.lblName.Size = new System.Drawing.Size(51, 20);
       this.lblName.TabIndex = 0;
       this.lblName.Text = "Name";
       // 
       // lblPath
       // 
       this.lblPath.AutoSize = true;
-      this.lblPath.Location = new System.Drawing.Point(8, 140);
+      this.lblPath.Location = new System.Drawing.Point(12, 215);
+      this.lblPath.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
       this.lblPath.Name = "lblPath";
-      this.lblPath.Size = new System.Drawing.Size(66, 13);
+      this.lblPath.Size = new System.Drawing.Size(99, 20);
       this.lblPath.TabIndex = 16;
       this.lblPath.Text = "AEM Jar File";
       // 
       // txtPath
       // 
-      this.txtPath.Location = new System.Drawing.Point(80, 136);
+      this.txtPath.Location = new System.Drawing.Point(120, 209);
+      this.txtPath.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
       this.txtPath.Name = "txtPath";
-      this.txtPath.Size = new System.Drawing.Size(376, 20);
+      this.txtPath.Size = new System.Drawing.Size(562, 26);
       this.txtPath.TabIndex = 17;
       // 
       // txtHostname
       // 
-      this.txtHostname.Location = new System.Drawing.Point(80, 37);
+      this.txtHostname.Location = new System.Drawing.Point(120, 57);
+      this.txtHostname.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
       this.txtHostname.Name = "txtHostname";
-      this.txtHostname.Size = new System.Drawing.Size(128, 20);
+      this.txtHostname.Size = new System.Drawing.Size(190, 26);
       this.txtHostname.TabIndex = 3;
       // 
       // lblHostname
       // 
       this.lblHostname.AutoSize = true;
-      this.lblHostname.Location = new System.Drawing.Point(8, 41);
+      this.lblHostname.Location = new System.Drawing.Point(12, 63);
+      this.lblHostname.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
       this.lblHostname.Name = "lblHostname";
-      this.lblHostname.Size = new System.Drawing.Size(55, 13);
+      this.lblHostname.Size = new System.Drawing.Size(83, 20);
       this.lblHostname.TabIndex = 2;
       this.lblHostname.Text = "Hostname";
       // 
       // txtPort
       // 
-      this.txtPort.Location = new System.Drawing.Point(284, 37);
+      this.txtPort.Location = new System.Drawing.Point(426, 57);
+      this.txtPort.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
       this.txtPort.Name = "txtPort";
-      this.txtPort.Size = new System.Drawing.Size(52, 20);
+      this.txtPort.Size = new System.Drawing.Size(76, 26);
       this.txtPort.TabIndex = 5;
       this.txtPort.Validating += new System.ComponentModel.CancelEventHandler(this.validate_EnsureNumber);
       // 
       // lblPort
       // 
       this.lblPort.AutoSize = true;
-      this.lblPort.Location = new System.Drawing.Point(252, 40);
+      this.lblPort.Location = new System.Drawing.Point(378, 62);
+      this.lblPort.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
       this.lblPort.Name = "lblPort";
-      this.lblPort.Size = new System.Drawing.Size(26, 13);
+      this.lblPort.Size = new System.Drawing.Size(38, 20);
       this.lblPort.TabIndex = 4;
       this.lblPort.Text = "Port";
       // 
       // txtContextPath
       // 
-      this.txtContextPath.Location = new System.Drawing.Point(80, 63);
+      this.txtContextPath.Location = new System.Drawing.Point(120, 97);
+      this.txtContextPath.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
       this.txtContextPath.Name = "txtContextPath";
-      this.txtContextPath.Size = new System.Drawing.Size(128, 20);
+      this.txtContextPath.Size = new System.Drawing.Size(190, 26);
       this.txtContextPath.TabIndex = 7;
       // 
       // lblContextPath
       // 
       this.lblContextPath.AutoSize = true;
-      this.lblContextPath.Location = new System.Drawing.Point(8, 67);
+      this.lblContextPath.Location = new System.Drawing.Point(12, 103);
+      this.lblContextPath.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
       this.lblContextPath.Name = "lblContextPath";
-      this.lblContextPath.Size = new System.Drawing.Size(68, 13);
+      this.lblContextPath.Size = new System.Drawing.Size(101, 20);
       this.lblContextPath.TabIndex = 6;
       this.lblContextPath.Text = "Context Path";
       // 
@@ -210,9 +219,10 @@ namespace AEMManager {
       // 
       // cmdBrowsePath
       // 
-      this.cmdBrowsePath.Location = new System.Drawing.Point(460, 136);
+      this.cmdBrowsePath.Location = new System.Drawing.Point(690, 209);
+      this.cmdBrowsePath.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
       this.cmdBrowsePath.Name = "cmdBrowsePath";
-      this.cmdBrowsePath.Size = new System.Drawing.Size(24, 20);
+      this.cmdBrowsePath.Size = new System.Drawing.Size(36, 31);
       this.cmdBrowsePath.TabIndex = 18;
       this.cmdBrowsePath.TabStop = false;
       this.cmdBrowsePath.Text = "...";
@@ -221,34 +231,38 @@ namespace AEMManager {
       // 
       // txtUsername
       // 
-      this.txtUsername.Location = new System.Drawing.Point(80, 186);
+      this.txtUsername.Location = new System.Drawing.Point(120, 286);
+      this.txtUsername.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
       this.txtUsername.Name = "txtUsername";
-      this.txtUsername.Size = new System.Drawing.Size(128, 20);
+      this.txtUsername.Size = new System.Drawing.Size(190, 26);
       this.txtUsername.TabIndex = 23;
       // 
       // lblUsername
       // 
       this.lblUsername.AutoSize = true;
-      this.lblUsername.Location = new System.Drawing.Point(8, 190);
+      this.lblUsername.Location = new System.Drawing.Point(12, 292);
+      this.lblUsername.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
       this.lblUsername.Name = "lblUsername";
-      this.lblUsername.Size = new System.Drawing.Size(55, 13);
+      this.lblUsername.Size = new System.Drawing.Size(83, 20);
       this.lblUsername.TabIndex = 22;
       this.lblUsername.Text = "Username";
       // 
       // txtPassword
       // 
-      this.txtPassword.Location = new System.Drawing.Point(80, 210);
+      this.txtPassword.Location = new System.Drawing.Point(120, 323);
+      this.txtPassword.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
       this.txtPassword.Name = "txtPassword";
       this.txtPassword.PasswordChar = '*';
-      this.txtPassword.Size = new System.Drawing.Size(128, 20);
+      this.txtPassword.Size = new System.Drawing.Size(190, 26);
       this.txtPassword.TabIndex = 26;
       // 
       // lblPassword
       // 
       this.lblPassword.AutoSize = true;
-      this.lblPassword.Location = new System.Drawing.Point(8, 214);
+      this.lblPassword.Location = new System.Drawing.Point(12, 329);
+      this.lblPassword.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
       this.lblPassword.Name = "lblPassword";
-      this.lblPassword.Size = new System.Drawing.Size(53, 13);
+      this.lblPassword.Size = new System.Drawing.Size(78, 20);
       this.lblPassword.TabIndex = 25;
       this.lblPassword.Text = "Password";
       // 
@@ -263,21 +277,20 @@ namespace AEMManager {
       this.grpJVMSettings.Controls.Add(this.chkJProfiler);
       this.grpJVMSettings.Controls.Add(this.chkJConsole);
       this.grpJVMSettings.Controls.Add(this.chkRemoteProcess);
-      this.grpJVMSettings.Controls.Add(this.label2);
       this.grpJVMSettings.Controls.Add(this.label1);
       this.grpJVMSettings.Controls.Add(this.lblMB);
-      this.grpJVMSettings.Controls.Add(this.txtMaxPermSizeMb);
       this.grpJVMSettings.Controls.Add(this.chkHideConfigWizards);
-      this.grpJVMSettings.Controls.Add(this.lblMaxPermSizeMb);
       this.grpJVMSettings.Controls.Add(this.txtHeapMaxSizeMb);
       this.grpJVMSettings.Controls.Add(this.lblHeapMaxSizeMb);
       this.grpJVMSettings.Controls.Add(this.txtDebugPort);
       this.grpJVMSettings.Controls.Add(this.lblDebugPort);
       this.grpJVMSettings.Controls.Add(this.txtHeapMinSizeMb);
       this.grpJVMSettings.Controls.Add(this.lblHeapMinSizeMb);
-      this.grpJVMSettings.Location = new System.Drawing.Point(499, 125);
+      this.grpJVMSettings.Location = new System.Drawing.Point(748, 192);
+      this.grpJVMSettings.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
       this.grpJVMSettings.Name = "grpJVMSettings";
-      this.grpJVMSettings.Size = new System.Drawing.Size(203, 322);
+      this.grpJVMSettings.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
+      this.grpJVMSettings.Size = new System.Drawing.Size(304, 495);
       this.grpJVMSettings.TabIndex = 33;
       this.grpJVMSettings.TabStop = false;
       this.grpJVMSettings.Text = "JVM Settings";
@@ -285,34 +298,38 @@ namespace AEMManager {
       // label4
       // 
       this.label4.AutoSize = true;
-      this.label4.Location = new System.Drawing.Point(31, 300);
+      this.label4.Location = new System.Drawing.Point(46, 462);
+      this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
       this.label4.Name = "label4";
-      this.label4.Size = new System.Drawing.Size(156, 13);
+      this.label4.Size = new System.Drawing.Size(229, 20);
       this.label4.TabIndex = 20;
       this.label4.Text = "(do not check for local process)";
       // 
       // txtJConsolePort
       // 
-      this.txtJConsolePort.Location = new System.Drawing.Point(84, 227);
+      this.txtJConsolePort.Location = new System.Drawing.Point(126, 349);
+      this.txtJConsolePort.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
       this.txtJConsolePort.Name = "txtJConsolePort";
-      this.txtJConsolePort.Size = new System.Drawing.Size(52, 20);
+      this.txtJConsolePort.Size = new System.Drawing.Size(76, 26);
       this.txtJConsolePort.TabIndex = 17;
       // 
       // label3
       // 
       this.label3.AutoSize = true;
-      this.label3.Location = new System.Drawing.Point(12, 230);
+      this.label3.Location = new System.Drawing.Point(18, 354);
+      this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
       this.label3.Name = "label3";
-      this.label3.Size = new System.Drawing.Size(72, 13);
+      this.label3.Size = new System.Drawing.Size(108, 20);
       this.label3.TabIndex = 16;
       this.label3.Text = "JConsole Port";
       // 
       // chkJVMDebug
       // 
       this.chkJVMDebug.AutoSize = true;
-      this.chkJVMDebug.Location = new System.Drawing.Point(15, 104);
+      this.chkJVMDebug.Location = new System.Drawing.Point(22, 160);
+      this.chkJVMDebug.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
       this.chkJVMDebug.Name = "chkJVMDebug";
-      this.chkJVMDebug.Size = new System.Drawing.Size(138, 17);
+      this.chkJVMDebug.Size = new System.Drawing.Size(203, 24);
       this.chkJVMDebug.TabIndex = 9;
       this.chkJVMDebug.Text = "Enable JVM Debugging";
       this.chkJVMDebug.UseVisualStyleBackColor = true;
@@ -320,26 +337,29 @@ namespace AEMManager {
       // 
       // txtJProfilerPort
       // 
-      this.txtJProfilerPort.Location = new System.Drawing.Point(84, 174);
+      this.txtJProfilerPort.Location = new System.Drawing.Point(126, 268);
+      this.txtJProfilerPort.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
       this.txtJProfilerPort.Name = "txtJProfilerPort";
-      this.txtJProfilerPort.Size = new System.Drawing.Size(52, 20);
+      this.txtJProfilerPort.Size = new System.Drawing.Size(76, 26);
       this.txtJProfilerPort.TabIndex = 14;
       // 
       // lblJProfilerPort
       // 
       this.lblJProfilerPort.AutoSize = true;
-      this.lblJProfilerPort.Location = new System.Drawing.Point(12, 176);
+      this.lblJProfilerPort.Location = new System.Drawing.Point(18, 271);
+      this.lblJProfilerPort.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
       this.lblJProfilerPort.Name = "lblJProfilerPort";
-      this.lblJProfilerPort.Size = new System.Drawing.Size(66, 13);
+      this.lblJProfilerPort.Size = new System.Drawing.Size(99, 20);
       this.lblJProfilerPort.TabIndex = 13;
       this.lblJProfilerPort.Text = "JProfiler Port";
       // 
       // chkJProfiler
       // 
       this.chkJProfiler.AutoSize = true;
-      this.chkJProfiler.Location = new System.Drawing.Point(15, 155);
+      this.chkJProfiler.Location = new System.Drawing.Point(22, 238);
+      this.chkJProfiler.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
       this.chkJProfiler.Name = "chkJProfiler";
-      this.chkJProfiler.Size = new System.Drawing.Size(173, 17);
+      this.chkJProfiler.Size = new System.Drawing.Size(260, 24);
       this.chkJProfiler.TabIndex = 12;
       this.chkJProfiler.Text = "Enable JProfiler instrumentation";
       this.chkJProfiler.UseVisualStyleBackColor = true;
@@ -348,9 +368,10 @@ namespace AEMManager {
       // chkJConsole
       // 
       this.chkJConsole.AutoSize = true;
-      this.chkJConsole.Location = new System.Drawing.Point(15, 204);
+      this.chkJConsole.Location = new System.Drawing.Point(22, 314);
+      this.chkJConsole.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
       this.chkJConsole.Name = "chkJConsole";
-      this.chkJConsole.Size = new System.Drawing.Size(163, 17);
+      this.chkJConsole.Size = new System.Drawing.Size(241, 24);
       this.chkJConsole.TabIndex = 15;
       this.chkJConsole.Text = "JConsole/JVisualVM Support";
       this.chkJConsole.UseVisualStyleBackColor = true;
@@ -359,120 +380,106 @@ namespace AEMManager {
       // chkRemoteProcess
       // 
       this.chkRemoteProcess.AutoSize = true;
-      this.chkRemoteProcess.Location = new System.Drawing.Point(15, 284);
+      this.chkRemoteProcess.Location = new System.Drawing.Point(22, 437);
+      this.chkRemoteProcess.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
       this.chkRemoteProcess.Name = "chkRemoteProcess";
-      this.chkRemoteProcess.Size = new System.Drawing.Size(106, 17);
+      this.chkRemoteProcess.Size = new System.Drawing.Size(156, 24);
       this.chkRemoteProcess.TabIndex = 19;
       this.chkRemoteProcess.Text = "Remote instance";
       this.chkRemoteProcess.UseVisualStyleBackColor = true;
       // 
-      // label2
-      // 
-      this.label2.AutoSize = true;
-      this.label2.Location = new System.Drawing.Point(138, 79);
-      this.label2.Name = "label2";
-      this.label2.Size = new System.Drawing.Size(23, 13);
-      this.label2.TabIndex = 8;
-      this.label2.Text = "MB";
-      // 
       // label1
       // 
       this.label1.AutoSize = true;
-      this.label1.Location = new System.Drawing.Point(138, 54);
+      this.label1.Location = new System.Drawing.Point(207, 83);
+      this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
       this.label1.Name = "label1";
-      this.label1.Size = new System.Drawing.Size(23, 13);
+      this.label1.Size = new System.Drawing.Size(33, 20);
       this.label1.TabIndex = 5;
       this.label1.Text = "MB";
       // 
       // lblMB
       // 
       this.lblMB.AutoSize = true;
-      this.lblMB.Location = new System.Drawing.Point(138, 28);
+      this.lblMB.Location = new System.Drawing.Point(207, 43);
+      this.lblMB.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
       this.lblMB.Name = "lblMB";
-      this.lblMB.Size = new System.Drawing.Size(23, 13);
+      this.lblMB.Size = new System.Drawing.Size(33, 20);
       this.lblMB.TabIndex = 2;
       this.lblMB.Text = "MB";
-      // 
-      // txtMaxPermSizeMb
-      // 
-      this.txtMaxPermSizeMb.Location = new System.Drawing.Point(84, 76);
-      this.txtMaxPermSizeMb.Name = "txtMaxPermSizeMb";
-      this.txtMaxPermSizeMb.Size = new System.Drawing.Size(52, 20);
-      this.txtMaxPermSizeMb.TabIndex = 7;
       // 
       // chkHideConfigWizards
       // 
       this.chkHideConfigWizards.AutoSize = true;
-      this.chkHideConfigWizards.Location = new System.Drawing.Point(15, 261);
+      this.chkHideConfigWizards.Location = new System.Drawing.Point(22, 402);
+      this.chkHideConfigWizards.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
       this.chkHideConfigWizards.Name = "chkHideConfigWizards";
-      this.chkHideConfigWizards.Size = new System.Drawing.Size(148, 17);
+      this.chkHideConfigWizards.Size = new System.Drawing.Size(218, 24);
       this.chkHideConfigWizards.TabIndex = 18;
       this.chkHideConfigWizards.Text = "Hide AEM Config Wizards";
       this.chkHideConfigWizards.UseVisualStyleBackColor = true;
       // 
-      // lblMaxPermSizeMb
-      // 
-      this.lblMaxPermSizeMb.AutoSize = true;
-      this.lblMaxPermSizeMb.Location = new System.Drawing.Point(12, 79);
-      this.lblMaxPermSizeMb.Name = "lblMaxPermSizeMb";
-      this.lblMaxPermSizeMb.Size = new System.Drawing.Size(54, 13);
-      this.lblMaxPermSizeMb.TabIndex = 6;
-      this.lblMaxPermSizeMb.Text = "Perm Gen";
-      // 
       // txtHeapMaxSizeMb
       // 
-      this.txtHeapMaxSizeMb.Location = new System.Drawing.Point(84, 50);
+      this.txtHeapMaxSizeMb.Location = new System.Drawing.Point(126, 77);
+      this.txtHeapMaxSizeMb.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
       this.txtHeapMaxSizeMb.Name = "txtHeapMaxSizeMb";
-      this.txtHeapMaxSizeMb.Size = new System.Drawing.Size(52, 20);
+      this.txtHeapMaxSizeMb.Size = new System.Drawing.Size(76, 26);
       this.txtHeapMaxSizeMb.TabIndex = 4;
       // 
       // lblHeapMaxSizeMb
       // 
       this.lblHeapMaxSizeMb.AutoSize = true;
-      this.lblHeapMaxSizeMb.Location = new System.Drawing.Point(12, 54);
+      this.lblHeapMaxSizeMb.Location = new System.Drawing.Point(18, 83);
+      this.lblHeapMaxSizeMb.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
       this.lblHeapMaxSizeMb.Name = "lblHeapMaxSizeMb";
-      this.lblHeapMaxSizeMb.Size = new System.Drawing.Size(56, 13);
+      this.lblHeapMaxSizeMb.Size = new System.Drawing.Size(81, 20);
       this.lblHeapMaxSizeMb.TabIndex = 3;
       this.lblHeapMaxSizeMb.Text = "Heap Max";
       // 
       // txtDebugPort
       // 
-      this.txtDebugPort.Location = new System.Drawing.Point(84, 124);
+      this.txtDebugPort.Location = new System.Drawing.Point(126, 191);
+      this.txtDebugPort.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
       this.txtDebugPort.Name = "txtDebugPort";
-      this.txtDebugPort.Size = new System.Drawing.Size(52, 20);
+      this.txtDebugPort.Size = new System.Drawing.Size(76, 26);
       this.txtDebugPort.TabIndex = 11;
       // 
       // lblDebugPort
       // 
       this.lblDebugPort.AutoSize = true;
-      this.lblDebugPort.Location = new System.Drawing.Point(12, 128);
+      this.lblDebugPort.Location = new System.Drawing.Point(18, 197);
+      this.lblDebugPort.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
       this.lblDebugPort.Name = "lblDebugPort";
-      this.lblDebugPort.Size = new System.Drawing.Size(61, 13);
+      this.lblDebugPort.Size = new System.Drawing.Size(90, 20);
       this.lblDebugPort.TabIndex = 10;
       this.lblDebugPort.Text = "Debug Port";
       // 
       // txtHeapMinSizeMb
       // 
-      this.txtHeapMinSizeMb.Location = new System.Drawing.Point(84, 24);
+      this.txtHeapMinSizeMb.Location = new System.Drawing.Point(126, 37);
+      this.txtHeapMinSizeMb.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
       this.txtHeapMinSizeMb.Name = "txtHeapMinSizeMb";
-      this.txtHeapMinSizeMb.Size = new System.Drawing.Size(52, 20);
+      this.txtHeapMinSizeMb.Size = new System.Drawing.Size(76, 26);
       this.txtHeapMinSizeMb.TabIndex = 1;
       // 
       // lblHeapMinSizeMb
       // 
       this.lblHeapMinSizeMb.AutoSize = true;
-      this.lblHeapMinSizeMb.Location = new System.Drawing.Point(12, 28);
+      this.lblHeapMinSizeMb.Location = new System.Drawing.Point(18, 43);
+      this.lblHeapMinSizeMb.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
       this.lblHeapMinSizeMb.Name = "lblHeapMinSizeMb";
-      this.lblHeapMinSizeMb.Size = new System.Drawing.Size(53, 13);
+      this.lblHeapMinSizeMb.Size = new System.Drawing.Size(77, 20);
       this.lblHeapMinSizeMb.TabIndex = 0;
       this.lblHeapMinSizeMb.Text = "Heap Min";
       // 
       // chkOpenBrowser
       // 
       this.chkOpenBrowser.AutoSize = true;
-      this.chkOpenBrowser.Location = new System.Drawing.Point(244, 214);
+      this.chkOpenBrowser.Location = new System.Drawing.Point(366, 329);
+      this.chkOpenBrowser.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
       this.chkOpenBrowser.Name = "chkOpenBrowser";
-      this.chkOpenBrowser.Size = new System.Drawing.Size(235, 17);
+      this.chkOpenBrowser.Size = new System.Drawing.Size(352, 24);
       this.chkOpenBrowser.TabIndex = 27;
       this.chkOpenBrowser.Text = "Open (default) browser after instance startup";
       this.chkOpenBrowser.UseVisualStyleBackColor = true;
@@ -480,9 +487,10 @@ namespace AEMManager {
       // chkRunmodeAuthor
       // 
       this.chkRunmodeAuthor.AutoSize = true;
-      this.chkRunmodeAuthor.Location = new System.Drawing.Point(81, 89);
+      this.chkRunmodeAuthor.Location = new System.Drawing.Point(122, 137);
+      this.chkRunmodeAuthor.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
       this.chkRunmodeAuthor.Name = "chkRunmodeAuthor";
-      this.chkRunmodeAuthor.Size = new System.Drawing.Size(56, 17);
+      this.chkRunmodeAuthor.Size = new System.Drawing.Size(82, 24);
       this.chkRunmodeAuthor.TabIndex = 11;
       this.chkRunmodeAuthor.TabStop = true;
       this.chkRunmodeAuthor.Text = "Author";
@@ -491,9 +499,10 @@ namespace AEMManager {
       // chkRunmodePublish
       // 
       this.chkRunmodePublish.AutoSize = true;
-      this.chkRunmodePublish.Location = new System.Drawing.Point(144, 89);
+      this.chkRunmodePublish.Location = new System.Drawing.Point(216, 137);
+      this.chkRunmodePublish.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
       this.chkRunmodePublish.Name = "chkRunmodePublish";
-      this.chkRunmodePublish.Size = new System.Drawing.Size(59, 17);
+      this.chkRunmodePublish.Size = new System.Drawing.Size(85, 24);
       this.chkRunmodePublish.TabIndex = 12;
       this.chkRunmodePublish.TabStop = true;
       this.chkRunmodePublish.Text = "Publish";
@@ -502,18 +511,20 @@ namespace AEMManager {
       // lblRunmode
       // 
       this.lblRunmode.AutoSize = true;
-      this.lblRunmode.Location = new System.Drawing.Point(8, 91);
+      this.lblRunmode.Location = new System.Drawing.Point(12, 140);
+      this.lblRunmode.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
       this.lblRunmode.Name = "lblRunmode";
-      this.lblRunmode.Size = new System.Drawing.Size(57, 13);
+      this.lblRunmode.Size = new System.Drawing.Size(83, 20);
       this.lblRunmode.TabIndex = 10;
       this.lblRunmode.Text = "Run Mode";
       // 
       // chkShowInstanceWindow
       // 
       this.chkShowInstanceWindow.AutoSize = true;
-      this.chkShowInstanceWindow.Location = new System.Drawing.Point(244, 190);
+      this.chkShowInstanceWindow.Location = new System.Drawing.Point(366, 292);
+      this.chkShowInstanceWindow.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
       this.chkShowInstanceWindow.Name = "chkShowInstanceWindow";
-      this.chkShowInstanceWindow.Size = new System.Drawing.Size(214, 17);
+      this.chkShowInstanceWindow.Size = new System.Drawing.Size(314, 24);
       this.chkShowInstanceWindow.TabIndex = 24;
       this.chkShowInstanceWindow.Text = "Show Process Window for this Instance";
       this.chkShowInstanceWindow.UseVisualStyleBackColor = true;
@@ -526,18 +537,21 @@ namespace AEMManager {
       this.grpTaskbar.Controls.Add(this.chkShowInTaskbar);
       this.grpTaskbar.Controls.Add(this.lblIconSet);
       this.grpTaskbar.Controls.Add(this.cboIconSet);
-      this.grpTaskbar.Location = new System.Drawing.Point(8, 238);
+      this.grpTaskbar.Location = new System.Drawing.Point(12, 366);
+      this.grpTaskbar.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
       this.grpTaskbar.Name = "grpTaskbar";
-      this.grpTaskbar.Size = new System.Drawing.Size(476, 76);
+      this.grpTaskbar.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
+      this.grpTaskbar.Size = new System.Drawing.Size(714, 117);
       this.grpTaskbar.TabIndex = 28;
       this.grpTaskbar.TabStop = false;
       this.grpTaskbar.Text = "Taskbar";
       // 
       // cmdCustomIconPath
       // 
-      this.cmdCustomIconPath.Location = new System.Drawing.Point(444, 48);
+      this.cmdCustomIconPath.Location = new System.Drawing.Point(666, 74);
+      this.cmdCustomIconPath.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
       this.cmdCustomIconPath.Name = "cmdCustomIconPath";
-      this.cmdCustomIconPath.Size = new System.Drawing.Size(24, 20);
+      this.cmdCustomIconPath.Size = new System.Drawing.Size(36, 31);
       this.cmdCustomIconPath.TabIndex = 5;
       this.cmdCustomIconPath.TabStop = false;
       this.cmdCustomIconPath.Text = "...";
@@ -546,26 +560,29 @@ namespace AEMManager {
       // 
       // txtCustomIconPath
       // 
-      this.txtCustomIconPath.Location = new System.Drawing.Point(72, 48);
+      this.txtCustomIconPath.Location = new System.Drawing.Point(108, 74);
+      this.txtCustomIconPath.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
       this.txtCustomIconPath.Name = "txtCustomIconPath";
-      this.txtCustomIconPath.Size = new System.Drawing.Size(368, 20);
+      this.txtCustomIconPath.Size = new System.Drawing.Size(550, 26);
       this.txtCustomIconPath.TabIndex = 4;
       // 
       // lblCustomIconPath
       // 
       this.lblCustomIconPath.AutoSize = true;
-      this.lblCustomIconPath.Location = new System.Drawing.Point(12, 52);
+      this.lblCustomIconPath.Location = new System.Drawing.Point(18, 80);
+      this.lblCustomIconPath.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
       this.lblCustomIconPath.Name = "lblCustomIconPath";
-      this.lblCustomIconPath.Size = new System.Drawing.Size(47, 13);
+      this.lblCustomIconPath.Size = new System.Drawing.Size(69, 20);
       this.lblCustomIconPath.TabIndex = 3;
       this.lblCustomIconPath.Text = "Icon File";
       // 
       // chkShowInTaskbar
       // 
       this.chkShowInTaskbar.AutoSize = true;
-      this.chkShowInTaskbar.Location = new System.Drawing.Point(236, 24);
+      this.chkShowInTaskbar.Location = new System.Drawing.Point(354, 37);
+      this.chkShowInTaskbar.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
       this.chkShowInTaskbar.Name = "chkShowInTaskbar";
-      this.chkShowInTaskbar.Size = new System.Drawing.Size(106, 17);
+      this.chkShowInTaskbar.Size = new System.Drawing.Size(152, 24);
       this.chkShowInTaskbar.TabIndex = 2;
       this.chkShowInTaskbar.Text = "Show in Taskbar";
       this.chkShowInTaskbar.UseVisualStyleBackColor = true;
@@ -573,9 +590,10 @@ namespace AEMManager {
       // lblIconSet
       // 
       this.lblIconSet.AutoSize = true;
-      this.lblIconSet.Location = new System.Drawing.Point(12, 23);
+      this.lblIconSet.Location = new System.Drawing.Point(18, 35);
+      this.lblIconSet.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
       this.lblIconSet.Name = "lblIconSet";
-      this.lblIconSet.Size = new System.Drawing.Size(47, 13);
+      this.lblIconSet.Size = new System.Drawing.Size(69, 20);
       this.lblIconSet.TabIndex = 0;
       this.lblIconSet.Text = "Icon Set";
       // 
@@ -583,9 +601,10 @@ namespace AEMManager {
       // 
       this.cboIconSet.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
       this.cboIconSet.FormattingEnabled = true;
-      this.cboIconSet.Location = new System.Drawing.Point(72, 20);
+      this.cboIconSet.Location = new System.Drawing.Point(108, 31);
+      this.cboIconSet.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
       this.cboIconSet.Name = "cboIconSet";
-      this.cboIconSet.Size = new System.Drawing.Size(128, 21);
+      this.cboIconSet.Size = new System.Drawing.Size(190, 28);
       this.cboIconSet.TabIndex = 1;
       // 
       // grpCustomJVMSettings
@@ -596,9 +615,11 @@ namespace AEMManager {
       this.grpCustomJVMSettings.Controls.Add(this.txtCustomJVMParam2);
       this.grpCustomJVMSettings.Controls.Add(this.chkCustomJVMParam1Active);
       this.grpCustomJVMSettings.Controls.Add(this.txtCustomJVMParam1);
-      this.grpCustomJVMSettings.Location = new System.Drawing.Point(8, 320);
+      this.grpCustomJVMSettings.Location = new System.Drawing.Point(12, 492);
+      this.grpCustomJVMSettings.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
       this.grpCustomJVMSettings.Name = "grpCustomJVMSettings";
-      this.grpCustomJVMSettings.Size = new System.Drawing.Size(476, 96);
+      this.grpCustomJVMSettings.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
+      this.grpCustomJVMSettings.Size = new System.Drawing.Size(714, 148);
       this.grpCustomJVMSettings.TabIndex = 29;
       this.grpCustomJVMSettings.TabStop = false;
       this.grpCustomJVMSettings.Text = "Custom JVM Settings";
@@ -606,10 +627,11 @@ namespace AEMManager {
       // chkCustomJVMParam3Active
       // 
       this.chkCustomJVMParam3Active.AutoSize = true;
-      this.chkCustomJVMParam3Active.Location = new System.Drawing.Point(12, 68);
+      this.chkCustomJVMParam3Active.Location = new System.Drawing.Point(18, 105);
+      this.chkCustomJVMParam3Active.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
       this.chkCustomJVMParam3Active.Name = "chkCustomJVMParam3Active";
       this.chkCustomJVMParam3Active.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-      this.chkCustomJVMParam3Active.Size = new System.Drawing.Size(68, 17);
+      this.chkCustomJVMParam3Active.Size = new System.Drawing.Size(99, 24);
       this.chkCustomJVMParam3Active.TabIndex = 4;
       this.chkCustomJVMParam3Active.Text = "Setting 3";
       this.chkCustomJVMParam3Active.UseVisualStyleBackColor = true;
@@ -617,18 +639,20 @@ namespace AEMManager {
       // 
       // txtCustomJVMParam3
       // 
-      this.txtCustomJVMParam3.Location = new System.Drawing.Point(88, 66);
+      this.txtCustomJVMParam3.Location = new System.Drawing.Point(132, 102);
+      this.txtCustomJVMParam3.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
       this.txtCustomJVMParam3.Name = "txtCustomJVMParam3";
-      this.txtCustomJVMParam3.Size = new System.Drawing.Size(360, 20);
+      this.txtCustomJVMParam3.Size = new System.Drawing.Size(538, 26);
       this.txtCustomJVMParam3.TabIndex = 5;
       // 
       // chkCustomJVMParam2Active
       // 
       this.chkCustomJVMParam2Active.AutoSize = true;
-      this.chkCustomJVMParam2Active.Location = new System.Drawing.Point(12, 44);
+      this.chkCustomJVMParam2Active.Location = new System.Drawing.Point(18, 68);
+      this.chkCustomJVMParam2Active.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
       this.chkCustomJVMParam2Active.Name = "chkCustomJVMParam2Active";
       this.chkCustomJVMParam2Active.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-      this.chkCustomJVMParam2Active.Size = new System.Drawing.Size(68, 17);
+      this.chkCustomJVMParam2Active.Size = new System.Drawing.Size(99, 24);
       this.chkCustomJVMParam2Active.TabIndex = 2;
       this.chkCustomJVMParam2Active.Text = "Setting 2";
       this.chkCustomJVMParam2Active.UseVisualStyleBackColor = true;
@@ -636,18 +660,20 @@ namespace AEMManager {
       // 
       // txtCustomJVMParam2
       // 
-      this.txtCustomJVMParam2.Location = new System.Drawing.Point(88, 42);
+      this.txtCustomJVMParam2.Location = new System.Drawing.Point(132, 65);
+      this.txtCustomJVMParam2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
       this.txtCustomJVMParam2.Name = "txtCustomJVMParam2";
-      this.txtCustomJVMParam2.Size = new System.Drawing.Size(360, 20);
+      this.txtCustomJVMParam2.Size = new System.Drawing.Size(538, 26);
       this.txtCustomJVMParam2.TabIndex = 3;
       // 
       // chkCustomJVMParam1Active
       // 
       this.chkCustomJVMParam1Active.AutoSize = true;
-      this.chkCustomJVMParam1Active.Location = new System.Drawing.Point(12, 20);
+      this.chkCustomJVMParam1Active.Location = new System.Drawing.Point(18, 31);
+      this.chkCustomJVMParam1Active.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
       this.chkCustomJVMParam1Active.Name = "chkCustomJVMParam1Active";
       this.chkCustomJVMParam1Active.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-      this.chkCustomJVMParam1Active.Size = new System.Drawing.Size(68, 17);
+      this.chkCustomJVMParam1Active.Size = new System.Drawing.Size(99, 24);
       this.chkCustomJVMParam1Active.TabIndex = 0;
       this.chkCustomJVMParam1Active.Text = "Setting 1";
       this.chkCustomJVMParam1Active.UseVisualStyleBackColor = true;
@@ -655,9 +681,10 @@ namespace AEMManager {
       // 
       // txtCustomJVMParam1
       // 
-      this.txtCustomJVMParam1.Location = new System.Drawing.Point(88, 18);
+      this.txtCustomJVMParam1.Location = new System.Drawing.Point(132, 28);
+      this.txtCustomJVMParam1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
       this.txtCustomJVMParam1.Name = "txtCustomJVMParam1";
-      this.txtCustomJVMParam1.Size = new System.Drawing.Size(360, 20);
+      this.txtCustomJVMParam1.Size = new System.Drawing.Size(538, 26);
       this.txtCustomJVMParam1.TabIndex = 1;
       // 
       // openFileDialogIcon
@@ -667,26 +694,29 @@ namespace AEMManager {
       // 
       // txtAdditionalRunmodes
       // 
-      this.txtAdditionalRunmodes.Location = new System.Drawing.Point(336, 87);
+      this.txtAdditionalRunmodes.Location = new System.Drawing.Point(504, 134);
+      this.txtAdditionalRunmodes.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
       this.txtAdditionalRunmodes.Name = "txtAdditionalRunmodes";
-      this.txtAdditionalRunmodes.Size = new System.Drawing.Size(215, 20);
+      this.txtAdditionalRunmodes.Size = new System.Drawing.Size(320, 26);
       this.txtAdditionalRunmodes.TabIndex = 14;
       // 
       // lblAdditionalRunmodes
       // 
       this.lblAdditionalRunmodes.AutoSize = true;
-      this.lblAdditionalRunmodes.Location = new System.Drawing.Point(216, 91);
+      this.lblAdditionalRunmodes.Location = new System.Drawing.Point(324, 140);
+      this.lblAdditionalRunmodes.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
       this.lblAdditionalRunmodes.Name = "lblAdditionalRunmodes";
-      this.lblAdditionalRunmodes.Size = new System.Drawing.Size(117, 13);
+      this.lblAdditionalRunmodes.Size = new System.Drawing.Size(175, 20);
       this.lblAdditionalRunmodes.TabIndex = 13;
       this.lblAdditionalRunmodes.Text = "Additional Run Mode(s)";
       // 
       // lblAemInstanceType
       // 
       this.lblAemInstanceType.AutoSize = true;
-      this.lblAemInstanceType.Location = new System.Drawing.Point(216, 67);
+      this.lblAemInstanceType.Location = new System.Drawing.Point(324, 103);
+      this.lblAemInstanceType.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
       this.lblAemInstanceType.Name = "lblAemInstanceType";
-      this.lblAemInstanceType.Size = new System.Drawing.Size(101, 13);
+      this.lblAemInstanceType.Size = new System.Drawing.Size(148, 20);
       this.lblAemInstanceType.TabIndex = 8;
       this.lblAemInstanceType.Text = "AEM Instance Type";
       // 
@@ -694,16 +724,18 @@ namespace AEMManager {
       // 
       this.cboAemInstanceType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
       this.cboAemInstanceType.FormattingEnabled = true;
-      this.cboAemInstanceType.Location = new System.Drawing.Point(336, 62);
+      this.cboAemInstanceType.Location = new System.Drawing.Point(504, 95);
+      this.cboAemInstanceType.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
       this.cboAemInstanceType.Name = "cboAemInstanceType";
-      this.cboAemInstanceType.Size = new System.Drawing.Size(215, 21);
+      this.cboAemInstanceType.Size = new System.Drawing.Size(320, 28);
       this.cboAemInstanceType.TabIndex = 9;
       // 
       // cmdBrowseJavaExecutable
       // 
-      this.cmdBrowseJavaExecutable.Location = new System.Drawing.Point(460, 161);
+      this.cmdBrowseJavaExecutable.Location = new System.Drawing.Point(690, 248);
+      this.cmdBrowseJavaExecutable.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
       this.cmdBrowseJavaExecutable.Name = "cmdBrowseJavaExecutable";
-      this.cmdBrowseJavaExecutable.Size = new System.Drawing.Size(24, 20);
+      this.cmdBrowseJavaExecutable.Size = new System.Drawing.Size(36, 31);
       this.cmdBrowseJavaExecutable.TabIndex = 21;
       this.cmdBrowseJavaExecutable.TabStop = false;
       this.cmdBrowseJavaExecutable.Text = "...";
@@ -712,17 +744,19 @@ namespace AEMManager {
       // 
       // txtJavaExecutable
       // 
-      this.txtJavaExecutable.Location = new System.Drawing.Point(80, 161);
+      this.txtJavaExecutable.Location = new System.Drawing.Point(120, 248);
+      this.txtJavaExecutable.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
       this.txtJavaExecutable.Name = "txtJavaExecutable";
-      this.txtJavaExecutable.Size = new System.Drawing.Size(376, 20);
+      this.txtJavaExecutable.Size = new System.Drawing.Size(562, 26);
       this.txtJavaExecutable.TabIndex = 20;
       // 
       // lblJavaExecutable
       // 
       this.lblJavaExecutable.AutoSize = true;
-      this.lblJavaExecutable.Location = new System.Drawing.Point(8, 165);
+      this.lblJavaExecutable.Location = new System.Drawing.Point(12, 254);
+      this.lblJavaExecutable.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
       this.lblJavaExecutable.Name = "lblJavaExecutable";
-      this.lblJavaExecutable.Size = new System.Drawing.Size(57, 13);
+      this.lblJavaExecutable.Size = new System.Drawing.Size(81, 20);
       this.lblJavaExecutable.TabIndex = 19;
       this.lblJavaExecutable.Text = "Java Exec";
       // 
@@ -733,9 +767,10 @@ namespace AEMManager {
       // 
       // cmdBrowseBrowserExecutable
       // 
-      this.cmdBrowseBrowserExecutable.Location = new System.Drawing.Point(460, 427);
+      this.cmdBrowseBrowserExecutable.Location = new System.Drawing.Point(690, 657);
+      this.cmdBrowseBrowserExecutable.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
       this.cmdBrowseBrowserExecutable.Name = "cmdBrowseBrowserExecutable";
-      this.cmdBrowseBrowserExecutable.Size = new System.Drawing.Size(24, 20);
+      this.cmdBrowseBrowserExecutable.Size = new System.Drawing.Size(36, 31);
       this.cmdBrowseBrowserExecutable.TabIndex = 32;
       this.cmdBrowseBrowserExecutable.TabStop = false;
       this.cmdBrowseBrowserExecutable.Text = "...";
@@ -744,17 +779,19 @@ namespace AEMManager {
       // 
       // txtBrowserExecutable
       // 
-      this.txtBrowserExecutable.Location = new System.Drawing.Point(80, 427);
+      this.txtBrowserExecutable.Location = new System.Drawing.Point(120, 657);
+      this.txtBrowserExecutable.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
       this.txtBrowserExecutable.Name = "txtBrowserExecutable";
-      this.txtBrowserExecutable.Size = new System.Drawing.Size(376, 20);
+      this.txtBrowserExecutable.Size = new System.Drawing.Size(562, 26);
       this.txtBrowserExecutable.TabIndex = 31;
       // 
       // lblBrowserExecutable
       // 
       this.lblBrowserExecutable.AutoSize = true;
-      this.lblBrowserExecutable.Location = new System.Drawing.Point(8, 431);
+      this.lblBrowserExecutable.Location = new System.Drawing.Point(12, 663);
+      this.lblBrowserExecutable.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
       this.lblBrowserExecutable.Name = "lblBrowserExecutable";
-      this.lblBrowserExecutable.Size = new System.Drawing.Size(45, 13);
+      this.lblBrowserExecutable.Size = new System.Drawing.Size(67, 20);
       this.lblBrowserExecutable.TabIndex = 30;
       this.lblBrowserExecutable.Text = "Browser";
       // 
@@ -766,9 +803,10 @@ namespace AEMManager {
       // chkRunmodeSampleContent
       // 
       this.chkRunmodeSampleContent.AutoSize = true;
-      this.chkRunmodeSampleContent.Location = new System.Drawing.Point(80, 112);
+      this.chkRunmodeSampleContent.Location = new System.Drawing.Point(120, 172);
+      this.chkRunmodeSampleContent.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
       this.chkRunmodeSampleContent.Name = "chkRunmodeSampleContent";
-      this.chkRunmodeSampleContent.Size = new System.Drawing.Size(226, 17);
+      this.chkRunmodeSampleContent.Size = new System.Drawing.Size(341, 24);
       this.chkRunmodeSampleContent.TabIndex = 15;
       this.chkRunmodeSampleContent.Text = "Install AEM Sample Content on first startup";
       this.chkRunmodeSampleContent.UseVisualStyleBackColor = true;
@@ -776,10 +814,10 @@ namespace AEMManager {
       // AemInstanceDialog
       // 
       this.AcceptButton = this.cmOK;
-      this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+      this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
       this.CancelButton = this.cmdCancel;
-      this.ClientSize = new System.Drawing.Size(715, 476);
+      this.ClientSize = new System.Drawing.Size(1072, 732);
       this.Controls.Add(this.chkRunmodeSampleContent);
       this.Controls.Add(this.cmdBrowseBrowserExecutable);
       this.Controls.Add(this.txtBrowserExecutable);
@@ -817,6 +855,7 @@ namespace AEMManager {
       this.Controls.Add(this.cmdCancel);
       this.Controls.Add(this.cmOK);
       this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+      this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
       this.MaximizeBox = false;
       this.MinimizeBox = false;
       this.Name = "AemInstanceDialog";
@@ -856,9 +895,7 @@ namespace AEMManager {
     private System.Windows.Forms.TextBox txtPassword;
     private System.Windows.Forms.Label lblPassword;
     private System.Windows.Forms.GroupBox grpJVMSettings;
-    private System.Windows.Forms.TextBox txtMaxPermSizeMb;
     private System.Windows.Forms.CheckBox chkHideConfigWizards;
-    private System.Windows.Forms.Label lblMaxPermSizeMb;
     private System.Windows.Forms.TextBox txtHeapMaxSizeMb;
     private System.Windows.Forms.Label lblHeapMaxSizeMb;
     private System.Windows.Forms.TextBox txtDebugPort;
@@ -866,7 +903,6 @@ namespace AEMManager {
     private System.Windows.Forms.TextBox txtHeapMinSizeMb;
     private System.Windows.Forms.Label lblHeapMinSizeMb;
     private System.Windows.Forms.CheckBox chkOpenBrowser;
-    private System.Windows.Forms.Label label2;
     private System.Windows.Forms.Label label1;
     private System.Windows.Forms.Label lblMB;
     private System.Windows.Forms.RadioButton chkRunmodeAuthor;

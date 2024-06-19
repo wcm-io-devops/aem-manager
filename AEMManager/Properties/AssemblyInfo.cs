@@ -28,8 +28,8 @@ using System.Runtime.InteropServices;
 //      Build Number
 //      Revision
 //
-[assembly: AssemblyVersion("2.4.0.0")]
-[assembly: AssemblyFileVersion("2.4.0.0")]
+[assembly: AssemblyVersion("2.4.1.0")]
+[assembly: AssemblyFileVersion("2.4.1.0")]
 
 // Configure log4net using the .config file
 [assembly: log4net.Config.XmlConfiguratorAttribute(Watch = true)]

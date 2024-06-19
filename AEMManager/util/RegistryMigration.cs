@@ -122,7 +122,6 @@ namespace AEMManager.Util {
         "JProfiler",
         "JProfilerPort",
         "JVMDebug",
-        "MaxPermSizeMb",
         "OpenBrowser",
         "Port",
         "RemoteProcess",

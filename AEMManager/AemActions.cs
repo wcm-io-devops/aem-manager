@@ -185,7 +185,6 @@ namespace AEMManager {
       // memory settings
       javaArgs.Add("-Xms" + pInstance.HeapMinSizeMb + "m");
       javaArgs.Add("-Xmx" + pInstance.HeapMaxSizeMb + "m");
-      javaArgs.Add("-XX:MaxPermSize=" + pInstance.MaxPermSizeMb + "m");
 
       // instance port
       if (pInstance.AemInstanceType == AemInstanceType.AEM54) {

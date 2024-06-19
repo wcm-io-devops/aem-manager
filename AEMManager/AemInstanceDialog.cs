@@ -79,7 +79,6 @@ namespace AEMManager {
       txtCustomIconPath.Text = mInstance.CustomIconPath;
       txtHeapMinSizeMb.Text = mInstance.HeapMinSizeMb.ToString();
       txtHeapMaxSizeMb.Text = mInstance.HeapMaxSizeMb.ToString();
-      txtMaxPermSizeMb.Text = mInstance.MaxPermSizeMb.ToString();
       chkJVMDebug.Checked = mInstance.JVMDebug;
       txtDebugPort.Text = mInstance.DebugPort.ToString();
       txtDebugPort.Enabled = chkJVMDebug.Checked;
@@ -133,7 +132,6 @@ namespace AEMManager {
       mInstance.Password = txtPassword.Text.Trim();
       mInstance.HeapMinSizeMb = ParseWithDefault(txtHeapMinSizeMb.Text, AemInstance.DEFAULT_HEAP_MIN_MB);
       mInstance.HeapMaxSizeMb = ParseWithDefault(txtHeapMaxSizeMb.Text, AemInstance.DEFAULT_HEAP_MAX_MB);
-      mInstance.MaxPermSizeMb = ParseWithDefault(txtMaxPermSizeMb.Text, AemInstance.DEFAULT_PERMSIZE_MB);
       mInstance.JVMDebug = chkJVMDebug.Checked;
       mInstance.DebugPort = ParseWithDefault(txtDebugPort.Text, 0);
       mInstance.JProfiler = chkJProfiler.Checked;

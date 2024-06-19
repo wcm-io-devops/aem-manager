@@ -38,7 +38,6 @@ namespace AEMManager {
     private bool mShowInTaskbar = true;
     private int mHeapMinSizeMb = DEFAULT_HEAP_MIN_MB;
     private int mHeapMaxSizeMb = DEFAULT_HEAP_MAX_MB;
-    private int mMaxPermSizeMb = DEFAULT_PERMSIZE_MB;
     private bool mJVMDebug = false;
     private int mDebugPort = 0;
     private bool mJProfiler = false;
@@ -257,15 +256,6 @@ namespace AEMManager {
       }
       set {
         mHeapMaxSizeMb = value;
-      }
-    }
-
-    public int MaxPermSizeMb {
-      get {
-        return mMaxPermSizeMb;
-      }
-      set {
-        mMaxPermSizeMb = value;
       }
     }
 
@@ -596,7 +586,6 @@ namespace AEMManager {
       mShowInTaskbar = ((int)pKey.GetValue("ShowInTaskbar", mShowInTaskbar ? 1 : 0)) != 0;
       mHeapMinSizeMb = (int)pKey.GetValue("HeapMinSizeMb", mHeapMinSizeMb);
       mHeapMaxSizeMb = (int)pKey.GetValue("HeapMaxSizeMb", mHeapMaxSizeMb);
-      mMaxPermSizeMb = (int)pKey.GetValue("MaxPermSizeMb", mMaxPermSizeMb);
       mJVMDebug = ((int)pKey.GetValue("JVMDebug", mJVMDebug ? 1 : 0)) != 0;
       mDebugPort = (int)pKey.GetValue("DebugPort", mDebugPort);
       mJProfiler = ((int)pKey.GetValue("JProfiler", mJProfiler ? 1 : 0)) != 0;
@@ -642,7 +631,6 @@ namespace AEMManager {
       key.SetValue("ShowInTaskbar", mShowInTaskbar ? 1 : 0);
       key.SetValue("HeapMinSizeMb", mHeapMinSizeMb);
       key.SetValue("HeapMaxSizeMb", mHeapMaxSizeMb);
-      key.SetValue("MaxPermSizeMb", mMaxPermSizeMb);
       key.SetValue("JVMDebug", mJVMDebug ? 1 : 0);
       key.SetValue("DebugPort", mDebugPort);
       key.SetValue("JProfiler", mJProfiler ? 1 : 0);
@@ -707,7 +695,6 @@ namespace AEMManager {
       clone.mShowInTaskbar = mShowInTaskbar;
       clone.mHeapMinSizeMb = mHeapMinSizeMb;
       clone.mHeapMaxSizeMb = mHeapMaxSizeMb;
-      clone.mMaxPermSizeMb = mMaxPermSizeMb;
       clone.mJVMDebug = mJVMDebug;
       clone.mDebugPort = mDebugPort;
       clone.mJProfiler = mJProfiler;

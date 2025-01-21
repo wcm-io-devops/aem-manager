@@ -1,23 +1,26 @@
 using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Windows.Forms;
 using System.Drawing;
 using Microsoft.Win32;
 
-namespace AEMManager.Util {
+namespace AEMManager.Util
+{
 
-  static class SystemUtil {
+  static class SystemUtil
+  {
 
     /// <summary>
     /// Saved current position/state of given form in registry.
     /// </summary>
     /// <param name="pfrm">Form instance</param>
-    public static void SaveWindowPos(Form pfrm) {
+    public static void SaveWindowPos(Form pfrm)
+    {
       RegistryKey key = RegistryUtil.GetUserKey(pfrm);
 
-      if (pfrm.MaximizeBox) {
-        if (pfrm.WindowState != FormWindowState.Minimized) {
+      if (IsMaximizable(pfrm))
+      {
+        if (pfrm.WindowState != FormWindowState.Minimized)
+        {
           key.SetValue("WindowPos_WindowState", (int)pfrm.WindowState);
         }
         pfrm.WindowState = FormWindowState.Normal;
@@ -26,7 +29,8 @@ namespace AEMManager.Util {
       key.SetValue("WindowPos_WindowX", pfrm.Location.X);
       key.SetValue("WindowPos_WindowY", pfrm.Location.Y);
 
-      if (pfrm.FormBorderStyle == FormBorderStyle.Sizable || pfrm.FormBorderStyle == FormBorderStyle.SizableToolWindow) {
+      if (IsSizable(pfrm))
+      {
         key.SetValue("WindowPos_WindowWidth", pfrm.Size.Width);
         key.SetValue("WindowPos_WindowHeight", pfrm.Size.Height);
       }
@@ -38,51 +42,81 @@ namespace AEMManager.Util {
     /// Restores the last saved position/state of given form from the registry.
     /// </summary>
     /// <param name="pfrm">Form instance</param>
-    public static void RestoreWindowPos(Form pfrm, int left = 0, int top = 0, int width = 0, int height = 0, FormWindowState windowState = FormWindowState.Normal) {
+    public static void RestoreWindowPos(Form pfrm)
+    {
+      int screenWidth = SystemInformation.WorkingArea.Width;
+      int screenHeight = SystemInformation.WorkingArea.Height;
+      int left = 0;
+      int top = 0;
+      int width = 0;
+      int height = 0;
+      FormWindowState windowState = FormWindowState.Normal;
+
+      // read saved values from registry
       RegistryKey key = RegistryUtil.GetUserKey(pfrm);
-      try {
-        pfrm.Location = new Point((int)key.GetValue("WindowPos_WindowX", left), (int)key.GetValue("WindowPos_WindowY", top));
-        if (pfrm.FormBorderStyle == FormBorderStyle.Sizable || pfrm.FormBorderStyle == FormBorderStyle.SizableToolWindow) {
-          pfrm.Size = new Size((int)key.GetValue("WindowPos_WindowWidth", width), (int)key.GetValue("WindowPos_WindowHeight", height));
+      try
+      {
+        left = (int)key.GetValue("WindowPos_WindowX", 0);
+        top = (int)key.GetValue("WindowPos_WindowY", 0);
+        if (IsSizable(pfrm))
+        {
+          width = (int)key.GetValue("WindowPos_WindowWidth", width);
+          height = (int)key.GetValue("WindowPos_WindowHeight", height);
         }
-        if (pfrm.MaximizeBox) {
-          pfrm.WindowState = (FormWindowState)key.GetValue("WindowPos_WindowState", windowState);
-        }
-      }
-      catch (Exception) {
-        if (left > 0 && top > 0) {
-          pfrm.Location = new Point(left, top);
-        }
-        if (pfrm.FormBorderStyle == FormBorderStyle.Sizable || pfrm.FormBorderStyle == FormBorderStyle.SizableToolWindow) {
-          if (width > 0 && height > 0) {
-            pfrm.Size = new Size(width, height);
-          }
-        }
-        if (pfrm.MaximizeBox) {
-          pfrm.WindowState = windowState;
+        if (IsMaximizable(pfrm))
+        {
+          windowState = (FormWindowState)key.GetValue("WindowPos_WindowState", windowState);
         }
       }
-      finally {
+      catch (Exception)
+      {
+        // ignore
+      }
+      finally
+      {
         key.Close();
       }
 
-      if (pfrm.FormBorderStyle == FormBorderStyle.Sizable || pfrm.FormBorderStyle == FormBorderStyle.SizableToolWindow) {
-        if (pfrm.Width > SystemInformation.VirtualScreen.Width) {
-          pfrm.Width = SystemInformation.VirtualScreen.Width - 20;
+      // restore window position (with ensuring window stays in virtual screen size)
+      if (IsSizable(pfrm) && width > 0 && height > 0)
+      {
+        if (width > screenWidth)
+        {
+          width = screenWidth - 20;
         }
-        if (pfrm.Height > SystemInformation.VirtualScreen.Height) {
-          pfrm.Height = SystemInformation.VirtualScreen.Height - 20;
+        if (height > screenHeight)
+        {
+          height = screenHeight - 20;
         }
+        pfrm.Size = new Size(width, height);
       }
-      if (pfrm.Left + pfrm.Width > SystemInformation.VirtualScreen.Width) {
-        pfrm.Left = SystemInformation.VirtualScreen.Width - pfrm.Width - 10;
+      if (left > 0 && top > 0)
+      {
+        if (left + pfrm.Width > screenWidth)
+        {
+          left = 10;
+        }
+        if (top + pfrm.Height > screenHeight)
+        {
+          top = 10;
+        }
+        pfrm.Location = new Point(left, top);
       }
-      if (pfrm.Top + pfrm.Height > SystemInformation.VirtualScreen.Height) {
-        pfrm.Top = SystemInformation.VirtualScreen.Height - pfrm.Height - 10;
+      if (IsMaximizable(pfrm))
+      {
+        pfrm.WindowState = windowState;
       }
+    }
 
+    private static bool IsSizable(Form pfrm)
+    {
+      return pfrm.FormBorderStyle == FormBorderStyle.Sizable || pfrm.FormBorderStyle == FormBorderStyle.SizableToolWindow;
+    }
+
+    private static bool IsMaximizable(Form pfrm)
+    {
+      return pfrm.MaximizeBox;
     }
 
   }
-
 }

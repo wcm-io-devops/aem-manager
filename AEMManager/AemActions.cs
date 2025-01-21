@@ -46,7 +46,7 @@ namespace AEMManager {
       menuItems.Add(item);
 
       item = new MenuItem();
-      item.Text = "Open Felix Console";
+      item.Text = "Open Web Console";
       item.Click += new EventHandler(OpenFelixConsole);
       menuItems.Add(item);
 

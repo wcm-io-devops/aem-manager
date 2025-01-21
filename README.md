@@ -60,3 +60,17 @@ From the AEM Manager window you can configure preferences via File > Preferences
 It is recommended to install [Otros Log Viewer](https://github.com/otros-systems/otroslogviewer) and configure it in the preference dialog.
 
 Here you will find a customized Log-importer configuration so Otros Log Viewer will understand the default AEM log file format by default: [otros-config](https://github.com/wcm-io/wcm-io-tooling/tree/develop/misc/log-analysis/otros-config).
+
+
+Trouble Shooting
+-----------
+
+If AEM Manager is running and the window disappears - try this:
+
+1. Move the mouse cursor over the icon in the taskbar and click the right mouse button. The following pop-up should appear:
+
+![Popup Taskbar](/resources/doc-images/aem-manager-pop-up-taskbar.png)
+
+2. Click on "Move" and on the right arrow key of your keyboard while holding the drag and drop cursor.
+
+The AEM Manager Window should appear again  

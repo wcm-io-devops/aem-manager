@@ -491,11 +491,20 @@ namespace AEMManager {
 
       this.NotifyIcon.ContextMenu = contextMenu;
 
-      mNotifyIcon.Text = this.Name;
+      SetNotifyIconText(this.Name);
       mNotifyIcon.Visible = this.ShowInTaskbar;
 
       string trayIcon = "trayicon_disabled";
       mNotifyIcon.Icon = IconCache.GetIcon(this.IconSet, this.CustomIconPath, trayIcon);
+    }
+
+    private void SetNotifyIconText(String text)
+    {
+      if (text.Length > 64)
+      {
+        text = text.Substring(0, 62) + "…";
+      }
+      mNotifyIcon.Text = text;
     }
 
     void propertiesMenuItem_Click(object sender, EventArgs e) {
@@ -542,7 +551,7 @@ namespace AEMManager {
           break;
       }
 
-      this.NotifyIcon.Text = this.Name + " (" + statusText + ")";
+      SetNotifyIconText(this.Name + " (" + statusText + ")");
       this.NotifyIcon.Icon = IconCache.GetIcon(this.IconSet, this.CustomIconPath, trayIcon);
 
       // show baloon message if instance was started up

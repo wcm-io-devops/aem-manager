@@ -313,9 +313,11 @@ namespace AEMManager {
       }
     }
 
-    /**
-     * Detects if the given path points to WSL and strips of the WSL path prefix.
-     */
+    /// <summary>
+    /// Detects if the given path points to WSL and returns the related Unix path if that's the case.
+    /// </summary>
+    /// <param name="path">The path to check.</param>
+    /// <returns>The Unix path if a WSL path is detected, or null if no WSL path is detected.</returns>
     private static string GetWslPath(string path) {
       Regex regex = new Regex(@"^\\\\wsl.localhost\\[^\\\s]+(\\[^\s]+)$");
       Match match = regex.Match(path.Trim());

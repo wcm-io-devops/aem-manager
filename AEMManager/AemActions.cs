@@ -46,7 +46,7 @@ namespace AEMManager {
       menuItems.Add(item);
 
       item = new MenuItem();
-      item.Text = "Open Felix Console";
+      item.Text = "Open Web Console";
       item.Click += new EventHandler(OpenFelixConsole);
       menuItems.Add(item);
 
@@ -279,7 +279,15 @@ namespace AEMManager {
 
       string executable = "cmd";
       string aemInstanceArguments = BuildCommandLineArguments(instance);
-      string arguments = "/c \"" + instance.JavaExecutable + "\" " + aemInstanceArguments;
+      string arguments = $"/c {instance.JavaExecutable} {aemInstanceArguments}";
+      string workDir = instance.PathWithoutFilename;
+
+      string wslPath = GetWslPath(workDir);
+      // start instance in WSL
+      if (wslPath != null) {
+        arguments = $"/c wsl sh -c \"cd {wslPath} && {instance.JavaExecutable} {aemInstanceArguments}\"";
+        workDir = Environment.CurrentDirectory;
+      }
 
       // add jprofiler path to current applications path to make sure spawned process gets it as well
       if (instance.JProfiler && (instance.JProfilerPort > 0)) {
@@ -295,13 +303,29 @@ namespace AEMManager {
         // show and hide console window again when it is not shown already - to prevent deadlock that occured sometimes stopping instances (DINT-349)
         instance.ConsoleOutputWindow.Show();
       }
-      instance.ConsoleOutputWindow.InitStartProcess(instance.PathWithoutFilename, instance.JavaExecutable, aemInstanceArguments);
+      instance.ConsoleOutputWindow.InitStartProcess(workDir, instance.JavaExecutable, aemInstanceArguments);
 
-      instance.JavaProcess = ExecuteCommand(instance.PathWithoutFilename, executable, arguments, instance.Name, instance.ShowInstanceWindow, "aem.ico", false, instance);
+      instance.JavaProcess = ExecuteCommand(workDir, executable, arguments, instance.Name, instance.ShowInstanceWindow, "aem.ico", false, instance);
       instance.JavaProcessVisible = instance.ShowInstanceWindow;
 
       if (!isConsoleOutputWindow) {
         instance.ConsoleOutputWindow.Hide();
+      }
+    }
+
+    /// <summary>
+    /// Detects if the given path points to WSL and returns the related Unix path if that's the case.
+    /// </summary>
+    /// <param name="path">The path to check.</param>
+    /// <returns>The Unix path if a WSL path is detected, or null if no WSL path is detected.</returns>
+    private static string GetWslPath(string path) {
+      Regex regex = new Regex(@"^\\\\wsl.localhost\\[^\\\s]+(\\[^\s]+)$");
+      Match match = regex.Match(path.Trim());
+      if (match.Success) {
+        return match.Groups[1].Value.Replace(@"\", "/");
+      }
+      else {
+        return null;
       }
     }
 

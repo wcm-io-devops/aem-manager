@@ -1,0 +1,12 @@
+name-template: 'Next Release'
+tag-template: 'next'
+
+exclude-labels:
+  - dependencies
+exclude-contributors:
+  - renovate
+
+template: |
+  ## What’s Changed
+
+  $CHANGES

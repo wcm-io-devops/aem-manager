@@ -18,6 +18,26 @@ namespace AEMManager {
       InitializeComponent();
     }
 
+    protected override void WndProc(ref Message m) {
+      const int WM_SETTINGCHANGE = 0x001A;
+
+      if (m.Msg == WM_SETTINGCHANGE) {
+        // Refresh the DataGridView when display settings change
+        try {
+          if (dgInstances.DataSource != null) {
+            dgInstances.SuspendLayout();
+            dgInstances.ClearSelection();
+            dgInstances.Refresh();
+            dgInstances.ResumeLayout();
+          }
+        } catch (Exception ex) {
+          System.Diagnostics.Trace.TraceError("Error refreshing dgInstances in response to WM_SETTINGCHANGE: " + ex);
+        }
+      }
+
+      base.WndProc(ref m);
+    }
+
     private void AemManager_Load(object sender, EventArgs e) {
       SystemUtil.RestoreWindowPos(this);
 
@@ -202,12 +222,16 @@ namespace AEMManager {
 
     public AemInstance SelectedInstanceInListview {
       get {
-        DataGridViewRow gridRow = this.dgInstances.CurrentRow;
-        if (gridRow == null) {
+        try {
+          if (dgInstances.CurrentRow == null || dgInstances.CurrentRow.DataBoundItem == null) {
+            return null;
+          }
+          DataRow row = (DataRow)((DataRowView)dgInstances.CurrentRow.DataBoundItem).Row;
+          return (AemInstance)row["Instance"];
+        }
+        catch {
           return null;
         }
-        DataRow row = (DataRow)((DataRowView)gridRow.DataBoundItem).Row;
-        return (AemInstance)row["Instance"];
       }
     }
 
@@ -235,11 +259,21 @@ namespace AEMManager {
 
       dgInstances.DataSource = dt;
 
-      foreach (DataGridViewRow gridRow in dgInstances.Rows) {
-        DataRow row = (DataRow)((DataRowView)gridRow.DataBoundItem).Row;
-        if (row["Instance"] == selectedInstance) {
-          dgInstances.CurrentCell = gridRow.Cells[0];
-          break;
+      if (selectedInstance != null) {
+        foreach (DataGridViewRow gridRow in dgInstances.Rows) {
+          try {
+            if (gridRow.DataBoundItem != null) {
+              DataRow row = (DataRow)((DataRowView)gridRow.DataBoundItem).Row;
+              if (row["Instance"] == selectedInstance) {
+                dgInstances.CurrentCell = gridRow.Cells[0];
+                break;
+              }
+            }
+          }
+          catch {
+            // Skip rows with invalid data binding
+            continue;
+          }
         }
       }
     }
@@ -249,67 +283,77 @@ namespace AEMManager {
     }
 
     private void dgInstances_MouseClick(object sender, MouseEventArgs e) {
-      if (e.Button == MouseButtons.Right) {
+      try {
+        if (e.Button == MouseButtons.Right)
+        {
 
-        // select instance below mousepointer
-        DataGridView.HitTestInfo hitTestInfo = this.dgInstances.HitTest(e.X, e.Y);
-        if (hitTestInfo.RowIndex >= 0) {
-          dgInstances.CurrentCell.Selected = false;
-          dgInstances.CurrentCell = dgInstances[0, hitTestInfo.RowIndex];
+          // select instance below mousepointer
+          DataGridView.HitTestInfo hitTestInfo = this.dgInstances.HitTest(e.X, e.Y);
+          if (hitTestInfo.RowIndex >= 0 && hitTestInfo.RowIndex < dgInstances.Rows.Count) {
+            if (dgInstances.CurrentCell != null) {
+              dgInstances.CurrentCell.Selected = false;
+            }
+            dgInstances.CurrentCell = dgInstances[0, hitTestInfo.RowIndex];
+          }
+
+          AemInstance instance = this.SelectedInstanceInListview;
+          if (instance == null) {
+            return;
+          }
+
+          // Context-MenÃ¼ initialisieren
+          List<MenuItem> menuItems = new List<MenuItem>();
+          MenuItem item;
+
+          item = new MenuItem();
+          item.Text = "&Add...";
+          item.Click += new EventHandler(addToolStripMenuItem_Click);
+          menuItems.Add(item);
+
+          item = new MenuItem();
+          item.Text = "&Edit...";
+          item.DefaultItem = true;
+          item.Click += new EventHandler(editToolStripMenuItem_Click);
+          menuItems.Add(item);
+
+          item = new MenuItem();
+          item.Text = "&Duplicate...";
+          item.Click += new EventHandler(copyToolStripMenuItem_Click);
+          menuItems.Add(item);
+
+          item = new MenuItem();
+          item.Text = "&Remove";
+          item.Click += new EventHandler(removeToolStripMenuItem_Click);
+          menuItems.Add(item);
+
+          item = new MenuItem();
+          item.Text = "-";
+          menuItems.Add(item);
+
+          item = new MenuItem();
+          item.Text = "&Show in Taskbar";
+          item.Click += new EventHandler(setShowInTaskbarToolStripMenuItem_Click);
+          item.Checked = instance.ShowInTaskbar;
+          menuItems.Add(item);
+
+          dgInstances.ContextMenu = new ContextMenu(menuItems.ToArray());
+
+          dgInstances.ContextMenu.MenuItems.Add("-");
+          AemActions.AddControlMenuItems(dgInstances.ContextMenu.MenuItems, instance);
+
+          dgInstances.ContextMenu.MenuItems.Add("-");
+          AemActions.AddOpenMenuItems(dgInstances.ContextMenu.MenuItems, instance, false);
+
+          dgInstances.ContextMenu.MenuItems.Add("-");
+          AemActions.AddLogMenuItems(dgInstances.ContextMenu.MenuItems, instance);
+
+          dgInstances.ContextMenu.Show(dgInstances, e.Location);
         }
-
-        AemInstance instance = this.SelectedInstanceInListview;
-        if (instance == null) {
-          return;
-        }
-
-        // Context-Menü initialisieren
-        List<MenuItem> menuItems = new List<MenuItem>();
-        MenuItem item;
-
-        item = new MenuItem();
-        item.Text = "&Add...";
-        item.Click += new EventHandler(addToolStripMenuItem_Click);
-        menuItems.Add(item);
-
-        item = new MenuItem();
-        item.Text = "&Edit...";
-        item.DefaultItem = true;
-        item.Click += new EventHandler(editToolStripMenuItem_Click);
-        menuItems.Add(item);
-
-        item = new MenuItem();
-        item.Text = "&Duplicate...";
-        item.Click += new EventHandler(copyToolStripMenuItem_Click);
-        menuItems.Add(item);
-
-        item = new MenuItem();
-        item.Text = "&Remove";
-        item.Click += new EventHandler(removeToolStripMenuItem_Click);
-        menuItems.Add(item);
-
-        item = new MenuItem();
-        item.Text = "-";
-        menuItems.Add(item);
-
-        item = new MenuItem();
-        item.Text = "&Show in Taskbar";
-        item.Click += new EventHandler(setShowInTaskbarToolStripMenuItem_Click);
-        item.Checked = instance.ShowInTaskbar;
-        menuItems.Add(item);
-
-        dgInstances.ContextMenu = new ContextMenu(menuItems.ToArray());
-
-        dgInstances.ContextMenu.MenuItems.Add("-");
-        AemActions.AddControlMenuItems(dgInstances.ContextMenu.MenuItems, instance);
-
-        dgInstances.ContextMenu.MenuItems.Add("-");
-        AemActions.AddOpenMenuItems(dgInstances.ContextMenu.MenuItems, instance, false);
-
-        dgInstances.ContextMenu.MenuItems.Add("-");
-        AemActions.AddLogMenuItems(dgInstances.ContextMenu.MenuItems, instance);
-
-        dgInstances.ContextMenu.Show(dgInstances, e.Location);
+      }
+      catch (Exception ex)
+      {
+        // Handle resolution change errors gracefully
+        System.Diagnostics.Debug.WriteLine("Mouse event error: " + ex.Message);
       }
     }
 
@@ -317,10 +361,17 @@ namespace AEMManager {
       if (!this.Visible) {
         return;
       }
-      foreach (DataGridViewRow gridRow in dgInstances.Rows) {
-        DataRow row = (DataRow)((DataRowView)gridRow.DataBoundItem).Row;
-        AemInstance instance = (AemInstance)row["Instance"];
-        row["Status"] = instance.GetStatusText();
+      try {
+        foreach (DataGridViewRow gridRow in dgInstances.Rows) {
+          if (gridRow.DataBoundItem != null) {
+            DataRow row = (DataRow)((DataRowView)gridRow.DataBoundItem).Row;
+            AemInstance instance = (AemInstance)row["Instance"];
+            row["Status"] = instance.GetStatusText();
+          }
+        }
+      }
+      catch {
+        // Handle any data binding errors during refresh
       }
     }
 

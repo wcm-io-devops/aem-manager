@@ -30,8 +30,8 @@ namespace AEMManager {
             dgInstances.Refresh();
             dgInstances.ResumeLayout();
           }
-        } catch {
-          // Silently handle any refresh errors
+        } catch (Exception ex) {
+          System.Diagnostics.Trace.TraceError("Error refreshing dgInstances in response to WM_SETTINGCHANGE: " + ex);
         }
       }
 
@@ -301,7 +301,7 @@ namespace AEMManager {
             return;
           }
 
-          // Context-Menü initialisieren
+          // Context-MenÃ¼ initialisieren
           List<MenuItem> menuItems = new List<MenuItem>();
           MenuItem item;
 

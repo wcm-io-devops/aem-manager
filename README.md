@@ -14,9 +14,32 @@ Installation
 
 * Download the latest release from the [Releases](https://github.com/wcm-io-devops/aem-manager/releases) section.
 * Execute the Windows installer `AEMManagerSetup.msi`
-* The AEM manager installs automatically an places an "AEM Manager" shortcut in the Startup folder of the start menu
+* The AEM manager installs into `Program Files (x86)\AEMManager` and places an "AEM Manager" shortcut in the Startup folder and under `wcm.io` in the Start menu.
 
 Tested with Windows 10 and Windows 11.
+Requires .NET Framework 4.8 or later. Run `setup.exe` from the installer build output to install the prerequisite if it is missing, or install it before running the MSI directly.
+
+
+Building
+--------
+
+Build on Windows with:
+
+* [Visual Studio Community 2022](https://visualstudio.microsoft.com/vs/community/) with the **.NET desktop development** workload and the **.NET Framework 4.8 targeting pack**.
+* The [Microsoft Visual Studio Installer Projects 2022](https://marketplace.visualstudio.com/items?itemName=VisualStudioClient.MicrosoftVisualStudio2022InstallerProjects) extension.
+
+Open `AEMManager.sln`, restore NuGet packages, select **Release | Any CPU**, and build the solution. The `AEMManagerSetup` project packages the application output, its configuration and dependencies, and the `icons` content files. The MSI and prerequisite bootstrapper are generated in `AEMManagerSetup\Release\` as `AEMManagerSetup.msi` and `setup.exe`. Debug builds use `AEMManagerSetup\Debug\`.
+
+The setup project uses Visual Studio Installer Projects (`.vdproj`), not WiX. No WiX toolset or extension is required. Build it in Visual Studio or with `devenv.com`, not standalone MSBuild or `dotnet build`. From a Visual Studio Developer Command Prompt:
+
+```bat
+nuget restore AEMManager.sln
+devenv.com AEMManager.sln /Rebuild "Release|Any CPU"
+```
+
+For a new release, update `AssemblyVersion` and `AssemblyFileVersion` in `AEMManager\Properties\AssemblyInfo.cs` and the setup project's `ProductVersion` (three numeric parts, currently `2.5.0`). Accept Visual Studio's prompt to generate a new `ProductCode`, but keep `UpgradeCode` unchanged so newer installers can replace older versions. The MSI filename is fixed and no longer includes the assembly version.
+
+When replacing a WiX installer with the same product version, uninstall the old version first. Before publishing, verify installation, Startup and Start menu shortcuts, upgrade from the previous release, and uninstallation on Windows.
 
 
 Features

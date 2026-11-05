@@ -38,3 +38,6 @@ build/
 .vs/
 *.suo
 *.user
+*.vdproj.vspscc
+AEMManagerSetup/Debug/
+AEMManagerSetup/Release/

@@ -212,7 +212,7 @@ namespace AEMManager {
 
       // debug mode
       if (pInstance.JVMDebug && (pInstance.DebugPort > 0)) {
-        javaArgs.Add("-Xdebug -Xnoagent -Djava.compiler=NONE -Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=" + pInstance.DebugPort);
+        javaArgs.Add("-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=" + pInstance.DebugPort);
       }
 
       // JProfile mode

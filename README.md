@@ -73,4 +73,27 @@ If AEM Manager is running and the window disappears - try this:
 
 2. Click on "Move" and on the right arrow key of your keyboard while holding the drag and drop cursor.
 
-The AEM Manager Window should appear again  
+The AEM Manager Window should appear again
+
+Build
+-----
+
+Prerequisites:
+
+* Visual Studio 2022
+* [Microsoft Visual Studio Installer Projects 2022](https://marketplace.visualstudio.com/items?itemName=VisualStudioClient.MicrosoftVisualStudio2022InstallerProjects) extension
+
+To build the installer:
+
+1. Open `AEMManager.sln` in Visual Studio and select the `Release` configuration.
+2. Build the solution (this builds the `AEMManager` application).
+3. Right-click the `AEMManagerSetup` project and choose *Build* (installer projects are not built by a normal solution build).
+4. The installer is created at `AEMManagerSetup\Release\AEMManagerSetup.msi`.
+
+Alternatively, build from the command line using `devenv`:
+
+```powershell
+devenv AEMManager.sln /Build Release /Project AEMManagerSetup
+```
+
+When releasing a new version, update the version in `AEMManager\Properties\AssemblyInfo.cs` and the `ProductVersion` of the `AEMManagerSetup` project (accept generating a new `ProductCode` so that previous versions are upgraded automatically).
